@@ -19,6 +19,7 @@ import './assets/css/global.css'
 import 'ant-design-vue/dist/antd.css'
 
 Vue.config.productionTip = false
+
 // 挂在js挂在 vue
 Vue.use(Antd)
 new Vue({

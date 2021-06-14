@@ -20,12 +20,13 @@
             <template slot="title">
               <span>🙋‍♂️ 主页</span>
             </template>
-            <a href="javascript:;">
+            <router-link to="/">
               <svg class="icon"
                    aria-hidden="true">
                 <use xlink:href="#icon-shouye"></use>
               </svg>
-            </a>
+            </router-link>
+
           </a-tooltip>
           <a-tooltip placement="top"
                      overlayClassName="bgc_tooltip">
@@ -59,9 +60,21 @@
             <a href="javascript:;">
               <svg class="icon"
                    aria-hidden="true">
-                <use xlink:href="#icon-wode"></use>
+                <use xlink:href="#icon-guanyu1"></use>
               </svg>
             </a>
+          </a-tooltip>
+          <a-tooltip placement="top"
+                     overlayClassName="bgc_tooltip">
+            <template slot="title">
+              <span>👷 登录</span>
+            </template>
+            <router-link to="/login">
+              <svg class="icon"
+                   aria-hidden="true">
+                <use xlink:href="#icon-wode"></use>
+              </svg>
+            </router-link>
           </a-tooltip>
         </div>
       </div>
@@ -117,7 +130,7 @@
 export default {
   data () {
     return {
-
+      transitionName: 'slide-left'// 默认动画
     }
   },
   created () {
@@ -128,6 +141,7 @@ export default {
   computed: {
 
   }
+
 }
 </script>
 
@@ -306,5 +320,14 @@ footer p {
   margin: 0;
   text-align: center;
   color: black;
+}
+/*app.vue  的style*/
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
 }
 </style>
