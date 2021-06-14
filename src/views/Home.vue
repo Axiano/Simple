@@ -134,12 +134,14 @@ h2 {
   /* background-color: teal; */
 }
 .text h1 {
+  font-size: 20px;
   margin: 15px;
   text-align: center;
   font-weight: 700 !important;
 }
 .text h2 {
-  margin-top: 30px;
+  font-size: 20px;
+  margin-top: 0.219074rem;
   text-align: center;
 }
 .text p {

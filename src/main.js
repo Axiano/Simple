@@ -3,8 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/js/flexible'
+import './assets/font/iconfont'
 // js 引入
 import Antd from 'ant-design-vue'
+
+// 字体 js
+
 // css引入
 // 全局css
 import './assets/css/global.css'
