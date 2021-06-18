@@ -15,3 +15,55 @@ body {
 * a {
   color: rgba(0, 0, 0, 0.65) !important;
 }
+.el-form-item__content {
+  margin-left: 0 !important;
+}
+.el-notification {
+  width: 150px !important;
+}
+.ant-drawer-content,
+.ant-drawer-content-wrapper {
+  /* box-shadow: 0; */
+  /* box-shadow: 1px 7px 12px 0 rgb(0 0 0 / 20%); */
+  background-color: white;
+
+  width: 158px !important;
+  height: 300px !important;
+}
+.ant-drawer-mask {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+.ant-drawer-content-wrapper {
+  position: absolute;
+  top: 50%;
+  margin-top: -158px;
+  /* margin-top: -1.15379rem; */
+  /* transform: translate(-50%, -50%); */
+}
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+.ant-menu-item {
+  padding-left: 15px !important;
+}
+@media screen and (max-width: 500px) {
+  .ant-drawer-content-wrapper {
+    margin-top: -234px !important;
+  }
+}
+@media screen and (min-width: 501px) {
+  .ant-drawer-content-wrapper {
+    margin-top: -158px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .ant-drawer-content-wrapper {
+    margin-top: -158px;
+  }
+}
+@media screen and (min-width: 901px) {
+  .ant-drawer-content-wrapper {
+    margin-top: -158px;
+  }
+}

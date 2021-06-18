@@ -9,19 +9,30 @@
       <div class="loginBoxH1">
         🦸‍♂️欢迎登录
       </div>
-      <a-form-model>
-        <a-form-model-item class="inputs">
-          <a-input placeholder="输入用户名"
-                   class="inputStyle" />
-        </a-form-model-item>
-        <a-form-model-item class="inputs">
-          <a-input placeholder="输入密码"
-                   class="inputStyle" />
-        </a-form-model-item>
-        <a-form-model-item class="btnlogin">
-          <a-button>登录</a-button>
-        </a-form-model-item>
-      </a-form-model>
+      <el-form :model="loginForm"
+               :rules="loginFormRules"
+               ref="loginFormref"
+               label-width="100px"
+               class="inputBox">
+        <el-form-item prop="username"
+                      class="inputs">
+          <el-input v-model="loginForm.username"
+                    class="inputStyle"
+                    placeholder="输入用户名"></el-input>
+        </el-form-item>
+        <el-form-item prop="password"
+                      class="inputs">
+          <el-input v-model="loginForm.password"
+                    class="inputStyle"
+                    placeholder="请输入密码"
+                    type="password"></el-input>
+        </el-form-item>
+        <el-form-item class="formbtnitem">
+          <el-button class="formbtn"
+                     plain
+                     @click="login">登录</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -30,14 +41,50 @@
 export default {
   data () {
     return {
-
+      loginForm: {
+        username: '',
+        password: ''
+      },
+      loginFormRules: {
+        username: [
+          { required: true, message: '请输入账号！', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码！', trigger: 'blur' }
+        ]
+      }
     }
   },
   created () {
-
   },
   methods: {
+    successmessage () {
+      this.$notify({
+        title: '登录成功',
+        type: 'success',
+        showClose: false
+      })
+    },
+    nosuccessmessage () {
+      this.$notify.error({
+        title: '登录失败',
+        showClose: false
+      })
+    },
+    login () {
+      this.$refs.loginFormref.validate(async valid => {
+        console.log(this.$http.post)
+        if (!valid) return
+        const { data: res } = await this.$http.post('http://api.axian.fun/api/login', this.loginForm)
 
+        if (res.status !== 0) {
+          return this.nosuccessmessage()
+        }
+        this.successmessage()
+        window.sessionStorage.setItem('token', res.token)
+        this.$router.push('/index')
+      })
+    }
   },
   computed: {
 
@@ -71,22 +118,27 @@ export default {
   border-radius: 20px;
   box-shadow: 1px 7px 12px 0 rgb(0 0 0 / 20%);
 }
-.inputs {
-  width: 240px;
-  margin: 0 auto;
-}
-.inputStyle {
-  margin: 10px 0;
-  width: 240px;
-}
 .loginBoxH1 {
   margin: 20px 0;
   text-align: center;
   font-size: 25px;
   font-weight: 600;
 }
-.btnlogin {
-  width: 100px;
+
+.inputStyle {
+  margin: 0 auto;
+  width: 240px;
+}
+.inputs {
   margin: 20px auto;
+  width: 240px;
+}
+.formbtnitem {
+  width: 240px;
+  margin: 0 auto;
+}
+.formbtn {
+  margin-left: 50%;
+  transform: translate(-50%, 0);
 }
 </style>

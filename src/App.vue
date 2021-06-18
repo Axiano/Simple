@@ -1,46 +1,44 @@
 <template>
-  <!-- 使用动态的 transition name -->
-  <transition name="component-fade"
-              mode="out-in">
-    <router-view></router-view>
-  </transition>
+  <div>
+    <transition name="slide-fade"
+                mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 
 </template>
 
 <script>
 
 export default {
-  name: 'App',
-  data () {
-    return {
-      index: '/',
-      names: 'left',
-      transitionName: 'slide-left'
+  name: 'app',
+  components: {
+  },
+  watch: {
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
   },
-  // 接着在父组件内
-  // watch $route 决定使用哪种过渡
-  watch: {
-    $route (to, from) {
-      // 目标导航下标和离开导航下标进行比较
-      if (to.meta.index < from.meta.index) {
-        this.names = 'left'
-      } else {
-        this.names = 'right'
-      }
-    }
+  created () {
+    this.$store.dispatch('getPageList')
   }
 }
-
 </script>
 
-<style scoped>
-.component-fade-enter-active,
-.component-fade-leave-active {
-  transition: opacity 0.3s ease;
+<style>
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
 }
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active for below version 2.1.8 */ {
+.slide-fade-leave-active {
+  transition: all 0.25s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  /* transform: translateX(0); */
   opacity: 0;
 }
 </style>
