@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="pageListH1">
-      文章列表
-    </div>
+    <div class="pageListH1"> 文章列表 </div>
 
     <div class="pageListBox">
       <el-table :data="pageList"
@@ -28,7 +26,10 @@
           </template>
         </el-table-column>
         <el-table-column label="文章地址"
-                         prop="pagepath">
+                         prop="pagepath"
+                         column-key="草稿"
+                         :filters="[{text: '草稿', value: '草稿'}]"
+                         :filter-method="filterHandler">
         </el-table-column>
         <el-table-column label="文章标题"
                          prop="pagetitle">
@@ -76,7 +77,6 @@
 <script>
 import { mapState } from 'vuex'
 
-// console.log(this.pageList)
 export default {
   data () {
     return {
@@ -108,7 +108,7 @@ export default {
       const { data: res } = await this.$http.get(`http://api.axian.fun/my/deletepage/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('成功删除！')
-      this.$store.commit('getPageList')
+      this.$store.dispatch('getPageList')
     },
     cancel (e) {
       console.log(e)
@@ -118,6 +118,9 @@ export default {
       this.$store.commit('getNowId', id)
       this.$router.push('/editpage')
       console.log(this.$store.state.nowId)
+    },
+    filterHandler (value, row, column) {
+      return value === row.pagepath
     }
   },
   computed: {

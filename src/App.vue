@@ -9,13 +9,18 @@
 </template>
 
 <script>
-
+const dom = document.querySelector('#id')
+if (dom !== null) {
+  dom.scrollTop = 0
+}
 export default {
   name: 'app',
   components: {
   },
   watch: {
     '$route' (to, from) {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
       const toDepth = to.path.split('/').length
       const fromDepth = from.path.split('/').length
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'

@@ -6,6 +6,7 @@ import store from './store'
 import './assets/js/flexible'
 import './assets/font/iconfont'
 import axios from 'axios'
+import { Notification } from 'element-ui'
 import mavonEditor from 'mavon-editor'
 
 // js 引入
@@ -42,7 +43,7 @@ axios.interceptors.response.use(config => {
   return config
 })
 Vue.prototype.$http = axios
-
+// eslint-disable-next-line no-unused-expressions
 Vue.prototype.$notify = Notification
 // 挂在js挂在 vue
 Vue.use(mavonEditor)

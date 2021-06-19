@@ -64,9 +64,6 @@ export default {
         pagecontent: ''
       },
       pageFormRules: {
-        pagepath: [
-          { required: true, message: ' ', trigger: 'blur' }
-        ],
         pagetitle: [
           { required: true, message: ' ', trigger: 'blur' }
         ],
@@ -123,8 +120,8 @@ export default {
         if (res.status !== 0) return this.nosuccessmessage()
         window.localStorage.setItem('saveHtml', ' ')
         this.$refs.pageFormRef.resetFields()
-        this.$router.push('/pagelist')
         this.successmessage()
+        this.$router.push('/pagelist')
       })
     },
     inputChange () {

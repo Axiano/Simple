@@ -164,7 +164,7 @@ footer {
   height: 100px;
   padding-top: 20px;
   margin-bottom: 20px;
-  background-color: white;
+  /* background-color: white; */
   color: black;
   font-size: 15px;
 }

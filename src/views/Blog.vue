@@ -100,7 +100,7 @@ header {
 footer {
   height: 100px;
   padding-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 97px;
   /* background-color: white; */
   color: black;
   font-size: 15px;

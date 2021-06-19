@@ -60,9 +60,6 @@ export default {
         pagecontent: ''
       },
       pageFormRules: {
-        pagepath: [
-          { required: true, message: ' ', trigger: 'blur' }
-        ],
         pagetitle: [
           { required: true, message: ' ', trigger: 'blur' }
         ],
@@ -80,9 +77,9 @@ export default {
   },
   created () {
     this.value = window.localStorage.getItem('saveHtml')
+    this.getTime()
   },
   mounted () {
-
   },
   methods: {
     successmessage () {
@@ -107,16 +104,24 @@ export default {
         window.localStorage.setItem('saveHtml', ' ')
         // this.$refs.pageFormRef.clearSelection()
         this.$refs.pageFormRef.resetFields()
-        this.$router.push('/pagelist')
         this.successmessage()
+        this.$router.push('/pagelist')
       })
     },
     inputChange () {
       this.mdhtml = this.$refs.md.d_render
       window.localStorage.setItem('saveHtml', this.value)
+    },
+    getTime () {
+      const tm = new Date()
+      const yy = tm.getFullYear()
+      const mm = (tm.getMonth() + 1) <= 9 ? '0' + (tm.getMonth() + 1) : (tm.getMonth() + 1)
+      const dd = tm.getDate() <= 9 ? '0' + tm.getDate() : tm.getDate()
+      this.pageForm.pagetime = yy + '-' + mm + '-' + dd
     }
   },
   computed: {
+
   }
 }
 </script>

@@ -6,12 +6,9 @@
         <span>{{postInfo.pagetime}}</span>
       </div>
     </div>
-    <transition name="slide-fade"
-                mode="out-in">
-      <div class="pagecontent markdown-body"
-           v-html="pagecontent">
-      </div>
-    </transition>
+    <div class="pagecontent markdown-body"
+         v-html="pagecontent">
+    </div>
   </div>
 </template>
 

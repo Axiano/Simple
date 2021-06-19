@@ -6,7 +6,8 @@ import {
   Input,
   Table,
   TableColumn,
-  Loading
+  Loading,
+  Pagination
 } from 'element-ui'
 
 Vue.use(Button)
@@ -16,3 +17,4 @@ Vue.use(Input)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Loading)
+Vue.use(Pagination)

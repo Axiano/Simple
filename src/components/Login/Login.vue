@@ -1,10 +1,14 @@
 <template>
   <div>
-    <router-link to="/blog">
-      <h1>
-        返回博客
-      </h1>
-    </router-link>
+    <header>
+      <div class="headerBox">
+      </div>
+      <router-link to="/blog">
+        <div class="headerH1">
+          Axian
+        </div>
+      </router-link>
+    </header>
     <div class="loginBox">
       <div class="loginBoxH1">
         🦸‍♂️欢迎登录
@@ -117,6 +121,7 @@ export default {
   background-color: white;
   border-radius: 20px;
   box-shadow: 1px 7px 12px 0 rgb(0 0 0 / 20%);
+  z-index: 1;
 }
 .loginBoxH1 {
   margin: 20px 0;
@@ -140,5 +145,22 @@ export default {
 .formbtn {
   margin-left: 50%;
   transform: translate(-50%, 0);
+}
+.headerH1 {
+  position: fixed;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  height: 60px;
+  line-height: 60px;
+}
+header {
+  height: 60px;
+}
+.headerBox {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(250, 250, 250, 0.8);
 }
 </style>

@@ -1,24 +1,19 @@
 <template>
   <div>
     <div class="pageInfo">
-      <div class="pageInfoH1">🙋‍♂️关于我</div>
-      <div class="pageInfodescribe">
-        <!-- 占位 -->
-        <!-- <span>{{postInfo.pagetime}}</span> -->
+      <div class="pageInfoH1">
+        <svg class="icon"
+             aria-hidden="true">
+          <use xlink:href="#icon-feichuan2"></use>
+        </svg>
+        时光机
       </div>
     </div>
     <transition name="slide-fade"
                 mode="out-in">
       <div class="pagecontent markdown-body">
         <div class="myInfo">
-          欢迎来到小破站，我是 Axian，90 后，一个折腾的青少年。 <br />
-          最喜欢的一句话：生活中只有一种英雄主义，那就是在认清生活真相之后依然热爱生活。 <br />
-          对大部分未知事物感兴趣 <br />
-          喜欢 🏓 🍦 ⛅ 🎵 💻 and Emoji 😆 <br />
-          一个正在努力的在校大三生。 <br />
-          🎉 欢迎你来到我的小破站 🎉 <br />
-
-          如果你想联系我，可以直接在评论里留言或者通过邮件 <br />
+          <span>站位</span>
         </div>
       </div>
     </transition>
@@ -45,8 +40,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 .pageInfo {
-  // margin: 0 0;
+  margin: 50px 0;
   height: 134px;
 }
 .pageInfoH1 {

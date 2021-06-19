@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "9337494",
+      "name": "草稿箱",
+      "font_class": "caogaoxiang",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
       "icon_id": "3705480",
       "name": "写文章",
       "font_class": "xiewenzhang",

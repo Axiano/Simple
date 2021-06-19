@@ -5,7 +5,7 @@
         <img src="../../assets/avatar.jpg"
              alt="">
         <div class="myinfoH1">阿贤哦</div>
-        <div class="myinfotext">🥰你终于来啦</div>
+        <div class="myinfotext">🌱简洁，但是不失优雅</div>
         <div class="mylinks">
 
           <a-tooltip placement="top"
@@ -38,12 +38,12 @@
             <template slot="title">
               <span>⌛ 时光机</span>
             </template>
-            <a href="javascript:;">
+            <router-link :to="{name: 'times'}">
               <svg class="icon"
                    aria-hidden="true">
                 <use xlink:href="#icon-feichuan2"></use>
               </svg>
-            </a>
+            </router-link>
           </a-tooltip>
           <a-tooltip placement="top"
                      overlayClassName="bgc_tooltip">
@@ -71,69 +71,102 @@
           </a-tooltip>
         </div>
       </div>
-      <div class="pageBoxs"
-           v-for="item in pageList"
-           :key="item.id"
-           @click="goPost(item.id)">
-        <a href="javascript:;">
-          <div class="pageBox">
-            <div class="pageBoxH1">
-              {{item.pagetitle}}
+      <div class="pageBoxs">
+        <div v-for="item in postList"
+             :key="item.id">
+          <router-link :to="'/post/' + item.pagepath"
+                       v-if="item.pagepath !== '草稿' ">
+            <div class="pageBox">
+              <div class="pageBoxH1">
+                {{item.pagetitle}}
+              </div>
+              <div class="pageBoxP pagemargin">
+                {{item.pagedescribe}}
+              </div>
+              <div class="pageBoxTime pagemargin">
+                {{item.pagetime}}
+              </div>
+              <div class="pageBoxTag pagemargin">
+                <router-link :to="{name: 'class', params:{class: item.pageclass}}">
+                  <div class="pageClass">
+                    <a-icon type="inbox" />
+                    {{item.pageclass}}
+                  </div>
+                </router-link>
+                <router-link :to="{name: 'tags', params: {tag: tag}}">
+                  <div class="pageLabel"
+                       v-for="(item2, i) in item.pagetag.split(' ')"
+                       :key="i"
+                       @click="goTagPage(item2)">
+                    <a-icon type="tag" />
+                    {{item2}}
+                  </div>
+                </router-link>
+              </div>
             </div>
-            <div class="pageBoxP pagemargin">
-              {{item.pagedescribe}}
-            </div>
-            <div class="pageBoxTime pagemargin">
-              {{item.pagetime}}
-            </div>
-            <div class="pageBoxTag pagemargin">
-              <a href="javascript:;">
-                <div class="pageClass">
-                  <a-icon type="inbox" />
-                  {{item.pageclass}}
-                </div>
-              </a>
-              <a href="javascript:;">
-                <div class="pageLabel">
-                  <a-icon type="tag" />
-                  {{item.pagetag}}
-
-                </div>
-              </a>
-            </div>
-          </div>
-        </a>
+          </router-link>
+        </div>
+        <!-- 分页 -->
+        <div class="pagination">
+          <a-pagination v-model="current"
+                        :total="total"
+                        :defaultPageSize="size"
+                        show-less-items
+                        @change="changePno"
+                        :hideOnSinglePage="true" />
+        </div>
       </div>
     </content>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import '../../assets/markdown/css/markdown.scss'
 import '../../assets/markdown/css/code.scss'
 
 export default {
   data () {
     return {
-      transitionName: 'slide-left'// 默认动画
+      transitionName: 'slide-left', // 默认动画
+      postList: [],
+      tag: '',
+      strtag: '',
+      total: 0,
+      current: 1,
+      size: 6
     }
   },
   created () {
-    this.$store.dispatch('getPageList')
+    this.getTotal()
+    this.getPageList()
+  },
+  mounted () {
+
   },
   methods: {
-    async goPost (id) {
-      // console.log(id)
-      const { data: res } = await this.$http.get(`http://api.axian.fun/api/getpage/${id}`)
-      if (res.status !== 0) return
-      this.$router.push(`/post/${res.data[0].pagepath}`)
+    async getPageList () {
+      const { data: res } = await this.$http.get('http://api.axian.fun/api/lists', { params: { pno: this.current--, size: this.size } })
+      this.postList = res
+      this.current++
+    },
+    async getTotal () {
+      const { data: res } = await this.$http.get('http://api.axian.fun/api/showtotalnum')
+      this.total = res[0].total
+    },
+    goTagPage (tag) {
+      this.tag = tag
+    },
+    changePno (pno, size) {
+      this.current = pno
+      this.size = size
+      this.getPageList()
+    },
+    handleCurrentChange () {
+
     }
   },
   computed: {
-    ...mapState(['pageList'])
   }
-
 }
 </script>
 
@@ -228,7 +261,7 @@ content {
   box-sizing: border-box;
   padding: 50px 20px 20px 50px;
   transition: all 0.6s;
-  margin: 20px auto;
+  margin: 50px auto;
   background-color: white;
   height: 284.438px;
 }
@@ -274,5 +307,10 @@ content {
 }
 .backTopIcon {
   font-size: 30px;
+}
+.pagination {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) !important;
 }
 </style>

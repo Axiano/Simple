@@ -12,6 +12,10 @@ import EditPage from '../components/page/EditPage.vue'
 import Bloghome from '../views/blog/Bloghome.vue'
 import Post from '../components/Post.vue'
 import About from '../components/About.vue'
+import Classified from '../components/Posts/ClassIfied.vue'
+import Tags from '../components/Posts/tags.vue'
+import Times from '../components/Posts/Times.vue'
+import constants from './constants'
 // 获取文章路由地址
 
 // import store from '../store/index'
@@ -32,12 +36,12 @@ import About from '../components/About.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Home, name: 'home' },
   {
     path: '/blog',
     component: Blog,
     children: [
-      { path: '/blog', component: Bloghome },
+      { path: '/blog', component: Bloghome, name: 'blog' },
       {
         path: '/post',
         component: Post,
@@ -46,10 +50,13 @@ const routes = [
           { path: '/post/*' }
         ]
       },
-      { path: '/about', component: About }
+      { path: '/about', component: About },
+      { path: '/class', component: Classified, name: 'class' },
+      { path: '/tags', component: Tags, name: 'tags' },
+      { path: '/times', component: Times, name: 'times' }
     ]
   },
-  { path: '/login', component: Login },
+  { path: '/login', component: Login, name: 'login' },
   {
     path: '/index',
     component: Index,
@@ -60,16 +67,20 @@ const routes = [
       next()
     },
     children: [
-      { path: '/welcome', component: Welcome },
-      { path: '/pagelist', component: PageList },
-      { path: '/wirtepage', component: WirtePage },
-      { path: '/editpage', component: EditPage }
+      { path: '/welcome', component: Welcome, name: 'welcome' },
+      { path: '/pagelist', component: PageList, name: 'postlist' },
+      { path: '/wirtepage', component: WirtePage, name: 'writepost' },
+      { path: '/editpage', component: EditPage, name: 'editpost' }
     ]
   }
-
 ]
+
 const router = new VueRouter({
   routes
+})
+// vue实现路由切换改变title
+router.afterEach((to, from) => {
+  window.document.title = constants[to.name]
 })
 
 // cv以下代码解决路由地址重复的报错问题(一劳永逸)
