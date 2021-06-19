@@ -1,9 +1,19 @@
 html,
 body {
+  font-family: "microsoft yahei";
   margin: 0;
   padding: 0;
   background-color: #fafafa !important;
 }
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+}
+/* --- */
 .bgc_tooltip .ant-tooltip-inner {
   color: #333;
   background-color: #fff !important;

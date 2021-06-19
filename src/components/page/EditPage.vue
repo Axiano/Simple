@@ -1,38 +1,46 @@
 <template>
   <div class="writeBigbox">
     <div class="writeBoxH1">
-      写文章
+      {{pageForm.pagetitle}}
     </div>
     <el-form :model="pageForm"
              :rules="pageFormRules"
              ref="pageFormRef"
              :inline="true"
              class="demo-form-inline">
-      <el-form-item prop="pagepath">
-        <el-input v-model="pageForm.pagepath"
-                  placeholder="地址"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetitle">
-        <el-input v-model="pageForm.pagetitle"
-                  placeholder="标题"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetime">
-        <el-input v-model="pageForm.pagetime"
-                  placeholder="日期"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagedescribe">
-        <el-input v-model="pageForm.pagedescribe"
-                  placeholder="文章描述"></el-input>
-      </el-form-item>
-      <el-form-item prop="pageclass">
-        <el-input v-model="pageForm.pageclass"
-                  placeholder="文章分类"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetag">
-        <el-input v-model="pageForm.pagetag"
-                  placeholder="文章标签"></el-input>
-      </el-form-item>
-      <button @click="addPage">该完啦</button>
+
+      <a-collapse accordion
+                  expandIconPosition="right">
+        <a-collapse-panel header="✍️这里修改">
+          <el-form-item prop="pagepath">
+            <el-input v-model="pageForm.pagepath"
+                      placeholder="地址"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetitle">
+            <el-input v-model="pageForm.pagetitle"
+                      placeholder="标题"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetime">
+            <el-input v-model="pageForm.pagetime"
+                      placeholder="日期"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagedescribe">
+            <el-input v-model="pageForm.pagedescribe"
+                      placeholder="文章描述"></el-input>
+          </el-form-item>
+          <el-form-item prop="pageclass">
+            <el-input v-model="pageForm.pageclass"
+                      placeholder="文章分类"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetag">
+            <el-input v-model="pageForm.pagetag"
+                      placeholder="文章标签"></el-input>
+          </el-form-item>
+        </a-collapse-panel>
+      </a-collapse>
+      <button @click="addPage"
+              :style="btnstyle">改完啦</button>
+
     </el-form>
     <div class="writeBox">
       <mavon-editor v-model="value"
@@ -45,8 +53,6 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
-
 export default {
   data () {
     return {
@@ -76,6 +82,12 @@ export default {
         pagetag: [
           { required: true, message: ' ', trigger: 'blur' }
         ]
+      },
+      btnstyle: {
+        fontSize: '15px',
+        marginTop: '20px',
+        marginLeft: '50%',
+        transform: 'translateX(-50%)'
       }
     }
   },

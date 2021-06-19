@@ -6,32 +6,24 @@
         <span>{{postInfo.pagetime}}</span>
       </div>
     </div>
-    <div class="pagecontent markdown-body"
-         v-html="pagecontent">
+    <div class="postBox">
+      <div class="pagecontent markdown-body"
+           v-html="pagecontent">
+      </div>
     </div>
+
   </div>
 </template>
 
 <script>
 import marked from 'marked'
-import '../assets/markdown/css/markdown.scss'
-import '../assets/markdown/css/code.scss'
-var rendererMD = new marked.Renderer()
-marked.setOptions({
-  renderer: rendererMD,
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false
-})
+import hljs from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
 
 export default {
-  // name: 'height',
   data () {
     return {
+      code: '```javascript\nfunction(){\n\tconsole.log(123)\n}\n```',
       postInfo: [],
       pagecontent: ''
     }
@@ -41,11 +33,21 @@ export default {
     this.getPost(path)
   },
   mounted () {
-    // const link = document.createElement('link')
-    // link.type = 'text/css'
-    // link.rel = 'stylesheet'
-    // link.href = 'https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css'
-    // document.head.appendChild(link)
+    var rendererMD = new marked.Renderer()
+    marked.setOptions({
+      renderer: rendererMD,
+      highlight: function (code) {
+        return hljs.highlightAuto(code).value
+      },
+      pedantic: false,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false,
+      xhtml: false
+    })
   },
   methods: {
     async getPost (path) {
@@ -61,6 +63,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 500px) {
+  .postBox {
+    width: 90% !important;
+  }
+  .postBox {
+    padding: 20px 15px !important;
+  }
+}
+@media screen and (min-width: 501px) {
+}
+@media screen and (max-width: 900px) {
+  .postBox {
+    width: 90% !important;
+  }
+}
+@media screen and (min-width: 901px) {
+}
 .pageInfo {
   margin: 50px 0;
   height: 134px;
@@ -76,10 +95,13 @@ export default {
   font-size: 20px;
 }
 .pagecontent {
-  margin: 0 auto;
-  padding: 56px;
-  width: 748px;
-  background-color: white;
+  // box-shadow: white;
 }
-/* 文章CSS */
+.postBox {
+  padding: 56px;
+  background-color: white;
+  overflow: hidden;
+  width: 748px;
+  margin: 0 auto;
+}
 </style>

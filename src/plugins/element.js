@@ -7,7 +7,8 @@ import {
   Table,
   TableColumn,
   Loading,
-  Pagination
+  Pagination,
+  Alert
 } from 'element-ui'
 
 Vue.use(Button)
@@ -18,3 +19,4 @@ Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Loading)
 Vue.use(Pagination)
+Vue.use(Alert)

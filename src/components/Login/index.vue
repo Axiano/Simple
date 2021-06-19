@@ -49,14 +49,14 @@
             </svg>
             文章列表
           </a-menu-item>
-          <a-menu-item key="4">
+          <!-- <a-menu-item key="4">
             <svg class="icon"
                  aria-hidden="true"
                  style="display: inline-block; width: 15px; height:15px; margin-right: 10px">
               <use xlink:href="#icon-caogaoxiang"></use>
             </svg>
             草稿箱
-          </a-menu-item>
+          </a-menu-item> -->
           <a-menu-item key="5"
                        @click="goBanck">
             注销

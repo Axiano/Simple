@@ -6,34 +6,42 @@
     <el-form :model="pageForm"
              :rules="pageFormRules"
              ref="pageFormRef"
+             label-position="right"
              :inline="true"
              class="demo-form-inline">
-      <el-form-item prop="pagepath">
-        <el-input v-model="pageForm.pagepath"
-                  placeholder="地址"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetitle">
-        <el-input v-model="pageForm.pagetitle"
-                  placeholder="标题"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetime">
-        <el-input v-model="pageForm.pagetime"
-                  placeholder="日期"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagedescribe">
-        <el-input v-model="pageForm.pagedescribe"
-                  placeholder="文章描述"></el-input>
-      </el-form-item>
-      <el-form-item prop="pageclass">
-        <el-input v-model="pageForm.pageclass"
-                  placeholder="文章分类"></el-input>
-      </el-form-item>
-      <el-form-item prop="pagetag">
-        <el-input v-model="pageForm.pagetag"
-                  placeholder="文章标签"></el-input>
-      </el-form-item>
-      <button @click="addPage">写完啦</button>
+      <a-collapse accordion>
+        <a-collapse-panel key="1"
+                          header="✍️请写填写这里">
+          <el-form-item prop="pagepath">
+            <el-input v-model="pageForm.pagepath"
+                      placeholder="地址"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetitle">
+            <el-input v-model="pageForm.pagetitle"
+                      placeholder="标题"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetime">
+            <el-input v-model="pageForm.pagetime"
+                      placeholder="日期"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagedescribe">
+            <el-input v-model="pageForm.pagedescribe"
+                      placeholder="文章描述"></el-input>
+          </el-form-item>
+          <el-form-item prop="pageclass">
+            <el-input v-model="pageForm.pageclass"
+                      placeholder="文章分类"></el-input>
+          </el-form-item>
+          <el-form-item prop="pagetag">
+            <el-input v-model="pageForm.pagetag"
+                      placeholder="文章标签"></el-input>
+          </el-form-item>
+        </a-collapse-panel>
+      </a-collapse>
+      <button @click="addPage"
+              :style="btnstyle">写完啦</button>
     </el-form>
+
     <div class="writeBox">
       <mavon-editor v-model="value"
                     class="mavonBox"
@@ -60,6 +68,9 @@ export default {
         pagecontent: ''
       },
       pageFormRules: {
+        pagepath: [
+          { required: true, message: ' ', trigger: 'blur' }
+        ],
         pagetitle: [
           { required: true, message: ' ', trigger: 'blur' }
         ],
@@ -72,12 +83,19 @@ export default {
         pagetag: [
           { required: true, message: ' ', trigger: 'blur' }
         ]
+      },
+      btnstyle: {
+        fontSize: '15px',
+        marginTop: '20px',
+        marginLeft: '50%',
+        transform: 'translateX(-50%)'
       }
     }
   },
   created () {
     this.value = window.localStorage.getItem('saveHtml')
     this.getTime()
+    this.info()
   },
   mounted () {
   },
@@ -118,6 +136,17 @@ export default {
       const mm = (tm.getMonth() + 1) <= 9 ? '0' + (tm.getMonth() + 1) : (tm.getMonth() + 1)
       const dd = tm.getDate() <= 9 ? '0' + tm.getDate() : tm.getDate()
       this.pageForm.pagetime = yy + '-' + mm + '-' + dd
+    },
+    info () {
+      this.$notification.open({
+        duration: false,
+        message: '写作提醒',
+        description:
+          `✏️在地址栏内填写 "草稿" 可自动生成草稿。
+          ✏️文章分类只能填写一种。
+          ✏️如果填写多个标签以空格相隔。 `,
+        icon: <a-icon type="smile" style="color: #108ee9" />
+      })
     }
   },
   computed: {
