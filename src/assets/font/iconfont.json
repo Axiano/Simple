@@ -1,10 +1,31 @@
 {
   "id": "1997088",
-  "name": "no name",
+  "name": "vue_blog",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "7335481",
+      "name": "回复",
+      "font_class": "huifu",
+      "unicode": "eb23",
+      "unicode_decimal": 60195
+    },
+    {
+      "icon_id": "18004826",
+      "name": "表情",
+      "font_class": "biaoqing",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "3860815",
+      "name": "留言",
+      "font_class": "liuyan",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
     {
       "icon_id": "9337494",
       "name": "草稿箱",

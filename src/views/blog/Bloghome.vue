@@ -21,18 +21,6 @@
             </router-link>
 
           </a-tooltip>
-          <!-- <a-tooltip placement="top"
-                     overlayClassName="bgc_tooltip">
-            <template slot="title">
-              <span>📚 归档</span>
-            </template>
-            <a href="javascript:;">
-              <svg class="icon"
-                   aria-hidden="true">
-                <use xlink:href="#icon-guidang"></use>
-              </svg>
-            </a>
-          </a-tooltip> -->
           <a-tooltip placement="top"
                      overlayClassName="bgc_tooltip">
             <template slot="title">
@@ -42,6 +30,18 @@
               <svg class="icon"
                    aria-hidden="true">
                 <use xlink:href="#icon-feichuan2"></use>
+              </svg>
+            </router-link>
+          </a-tooltip>
+          <a-tooltip placement="top"
+                     overlayClassName="bgc_tooltip">
+            <template slot="title">
+              <span>💬 留言</span>
+            </template>
+            <router-link :to="{name: 'comments'}">
+              <svg class="icon"
+                   aria-hidden="true">
+                <use xlink:href="#icon-liuyan"></use>
               </svg>
             </router-link>
           </a-tooltip>
@@ -62,7 +62,7 @@
             <template slot="title">
               <span>👷 登录</span>
             </template>
-            <router-link to="/login">
+            <router-link to="/welcome">
               <svg class="icon"
                    aria-hidden="true">
                 <use xlink:href="#icon-wode"></use>
@@ -70,6 +70,10 @@
             </router-link>
           </a-tooltip>
         </div>
+      </div>
+      <div class="noPostBox"
+           v-if="total === 0">
+        没有文章啦，快去写一篇吧。📝
       </div>
       <div class="pageBoxs">
         <div v-for="item in postList"
@@ -205,6 +209,7 @@ export default {
 @media screen and (max-width: 900px) {
   .pageBox {
     width: 90%;
+    padding: 30px 10px 10px 30px !important;
   }
 }
 @media screen and (min-width: 901px) {
@@ -219,7 +224,7 @@ content {
   margin: 0 auto;
   padding: 40px 0;
   /* width: 3.651234rem; */
-  height: 260px;
+  /* height: 260px; */
   /* background-color: burlywood; */
 }
 .myinfo img {
@@ -247,15 +252,12 @@ content {
   overflow: hidden;
 }
 .mylinks {
-  margin: 30px 0;
+  margin-top: 20px;
   text-align: center;
 }
 .mylinks .icon {
   font-size: 20px;
   margin: 0 8px;
-}
-.pageBoxs {
-  padding-top: 50px;
 }
 .pageBox {
   box-sizing: border-box;
@@ -312,5 +314,10 @@ content {
   position: absolute;
   left: 50%;
   transform: translateX(-50%) !important;
+}
+.noPostBox {
+  width: 300px;
+  margin: 0 auto;
+  font-size: 20px;
 }
 </style>

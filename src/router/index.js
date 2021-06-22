@@ -1,6 +1,7 @@
 /* eslint-disable no-eval */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import NoPage from '../views/404.vue'
 import Home from '../views/Home.vue'
 import Blog from '../views/Blog.vue'
 import Login from '../components/Login/Login.vue'
@@ -15,28 +16,15 @@ import About from '../components/About.vue'
 import Classified from '../components/Posts/ClassIfied.vue'
 import Tags from '../components/Posts/tags.vue'
 import Times from '../components/Posts/Times.vue'
+import indexTimes from '../components/page/timelink.vue'
 import constants from './constants'
-// 获取文章路由地址
-
-// import store from '../store/index'
-// import _ from 'lodash'
-// const data = _.clone(store.state)
-
-// console.log(store.commit('showpageList'))
-// eslint-disable-next-line no-unused-expressions
-
-// store.commit('initPostList')
-
-// const resdata = JSON.parse(JSON.stringify(store.state))
-// console.log(resdata)
-// const data = store.state
-// console.log(data)
-// console.log(resdata)
-
-Vue.use(VueRouter)
-
+import Music from '../components/music.vue'
+import Comments from '../components/Posts/comments.vue'
+import Comment from '../components/page/Comment.vue'
 const routes = [
+  { path: '*', component: NoPage },
   { path: '/', component: Home, name: 'home' },
+  { path: '/music', component: Music },
   {
     path: '/blog',
     component: Blog,
@@ -47,13 +35,14 @@ const routes = [
         component: Post,
         name: 'post',
         children: [
-          { path: '/post/*' }
+          { path: '/post/*', name: 'post' }
         ]
       },
-      { path: '/about', component: About },
+      { path: '/about', component: About, name: 'about' },
       { path: '/class', component: Classified, name: 'class' },
       { path: '/tags', component: Tags, name: 'tags' },
-      { path: '/times', component: Times, name: 'times' }
+      { path: '/times', component: Times, name: 'times' },
+      { path: '/comments', component: Comments, name: 'comments' }
     ]
   },
   { path: '/login', component: Login, name: 'login' },
@@ -70,7 +59,9 @@ const routes = [
       { path: '/welcome', component: Welcome, name: 'welcome' },
       { path: '/pagelist', component: PageList, name: 'postlist' },
       { path: '/wirtepage', component: WirtePage, name: 'writepost' },
-      { path: '/editpage', component: EditPage, name: 'editpost' }
+      { path: '/editpage', component: EditPage, name: 'editpost' },
+      { path: '/timelinks', component: indexTimes, name: 'timelinks' },
+      { path: '/comment', component: Comment, name: 'comment' }
     ]
   }
 ]
@@ -89,4 +80,5 @@ VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
+Vue.use(VueRouter)
 export default router

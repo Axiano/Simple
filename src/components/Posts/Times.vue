@@ -13,7 +13,27 @@
                 mode="out-in">
       <div class="pagecontent markdown-body">
         <div class="myInfo">
-          <span>站位</span>
+          <div class="timelinkBoxs"
+               v-for="item in timelinks"
+               :key="item.id">
+            <img src="../../assets/avatar.jpg"
+                 alt="">
+            <div class="pBox"
+                 v-html="item.timecontent">
+            </div>
+            <div class="timeinfo">
+              <div class="equipemnt">
+                <a-icon type="windows"
+                        v-if="item.timeinfo === 'windows10'" />
+                <a-icon type="apple"
+                        v-if="item.timeinfo === 'ios'" />
+                <a-icon type="android"
+                        v-if="item.timeinfo === 'android'" />
+                {{item.timeinfo}}
+              </div>
+              <div class="timeBox">{{item.time}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </transition>
@@ -21,25 +41,49 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   // name: 'height',
   data () {
     return {
+
     }
   },
   created () {
-  },
-  mounted () {
+    this.$store.dispatch('getTimeLinks')
   },
   methods: {
+
   },
   computed: {
-
+    ...mapState(['timelinks'])
   }
 }
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 500px) {
+  .pagecontent {
+    width: 90% !important;
+    padding: 20px !important;
+  }
+  .timelinkBoxs {
+    width: 100% !important;
+    padding: 8px !important;
+  }
+  .timeinfo {
+    // left: 51% !important;
+  }
+}
+@media screen and (min-width: 501px) {
+}
+@media screen and (max-width: 900px) {
+  .pagecontent {
+    width: 90% !important;
+  }
+}
+@media screen and (min-width: 901px) {
+}
 .icon {
   width: 1em;
   height: 1em;
@@ -49,7 +93,7 @@ export default {
 }
 .pageInfo {
   margin: 50px 0;
-  height: 134px;
+  // height: 134px;
 }
 .pageInfoH1 {
   text-align: center;
@@ -69,5 +113,41 @@ export default {
 }
 .myInfo {
   font-size: 18px;
+}
+.timelinkBoxs {
+  position: relative;
+  margin: 20px auto;
+  padding: 15px;
+  padding-bottom: 8px;
+  width: 420px;
+  background-color: rgba(38, 171, 233, 0.486);
+  border-radius: 13px;
+  img {
+    position: absolute;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .pBox {
+    margin-left: 74px;
+    margin-top: 10px;
+    font-size: 16px;
+    width: 80%;
+  }
+  .timeinfo {
+    display: flex;
+    position: relative;
+    z-index: 10;
+  }
+  .equipemnt {
+    display: inline-block;
+    margin-left: auto;
+    justify-content: flex-end;
+    font-size: 10px;
+  }
+  .timeBox {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 10px;
+  }
 }
 </style>

@@ -11,14 +11,12 @@
                 mode="out-in">
       <div class="pagecontent markdown-body">
         <div class="myInfo">
-          欢迎来到小破站，我是 Axian，90 后，一个折腾的青少年。 <br />
-          最喜欢的一句话：生活中只有一种英雄主义，那就是在认清生活真相之后依然热爱生活。 <br />
-          对大部分未知事物感兴趣 <br />
-          喜欢 🏓 🍦 ⛅ 🎵 💻 and Emoji 😆 <br />
-          一个正在努力的在校大三生。 <br />
-          🎉 欢迎你来到我的小破站 🎉 <br />
-
-          如果你想联系我，可以直接在评论里留言或者通过邮件 <br />
+          <span>欢迎来到我的 Blog，我是 Axian，90 后，爱折腾，爱生活。</span> <br />
+          <span>最喜欢的一句话：<br />
+            生活中只有一种英雄主义，那就是在认清生活真相之后依然热爱生活。</span> <br />
+          <span>对大部分未知事物感兴趣🧑‍💻</span> <br />
+          <span>喜欢 🏓 🍦 ⛅ 🎵 💻 😺 and Emoji 😆</span> <br />
+          <span>如果你想联系我，可以在留言板评论或者通过邮件<a href="javascript:;"> 577914237@qq.com</a> </span>
         </div>
       </div>
     </transition>
@@ -45,8 +43,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media screen and (max-width: 500px) {
+  .pagecontent {
+    width: 90% !important;
+    padding: 20px !important;
+  }
+}
+@media screen and (min-width: 501px) {
+}
+@media screen and (max-width: 900px) {
+  .pagecontent {
+    width: 90% !important;
+  }
+}
+@media screen and (min-width: 901px) {
+}
 .pageInfo {
-  // margin: 0 0;
   height: 134px;
 }
 .pageInfoH1 {

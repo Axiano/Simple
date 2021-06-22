@@ -20,7 +20,7 @@
                 @click="goBlog">
           <div class="cardText">
             <h2>博客 Blog</h2> <br />
-            <p class="fontSite">✏️ 涨知识</p>
+            <p class="fontSite">✏️ 随便写写</p>
           </div>
           <span class="icon">
             📖
@@ -30,11 +30,11 @@
           <a-card hoverable
                   class="aCard cards2">
             <div class="cardText">
-              <h2>博客 Blog</h2> <br />
-              <p class="fontSite">✏️ 涨知识</p>
+              <h2>项目 Project</h2> <br />
+              <p class="fontSite">📦 发现新大陆</p>
             </div>
             <span class="icon">
-              📦
+              🗃️
             </span>
           </a-card>
         </div>
@@ -119,7 +119,7 @@ export default {
   background-color: #24292e;
 }
 .cards2 {
-  background-color: #24292e;
+  background-color: #2f93f7;
 }
 .cards3 {
   background-color: #24292e;

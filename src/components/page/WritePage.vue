@@ -139,7 +139,7 @@ export default {
     },
     info () {
       this.$notification.open({
-        duration: false,
+        duration: 0,
         message: '写作提醒',
         description:
           `✏️在地址栏内填写 "草稿" 可自动生成草稿。
@@ -148,9 +148,6 @@ export default {
         icon: <a-icon type="smile" style="color: #108ee9" />
       })
     }
-  },
-  computed: {
-
   }
 }
 </script>
@@ -184,7 +181,6 @@ export default {
   }
 }
 .writeBoxH1 {
-  /* margin-top: 50px; */
   text-align: center;
   font-size: 25px;
   font-weight: 500;

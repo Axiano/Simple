@@ -8,7 +8,7 @@ import './assets/font/iconfont'
 import axios from 'axios'
 import { Notification } from 'element-ui'
 import mavonEditor from 'mavon-editor'
-
+import VueLazyload from 'vue-lazyload'
 // js 引入
 import Antd from 'ant-design-vue'
 
@@ -48,7 +48,7 @@ Vue.prototype.$notify = Notification
 // 挂在js挂在 vue
 Vue.use(mavonEditor)
 Vue.use(Antd)
-
+Vue.use(VueLazyload)
 new Vue({
   router,
   store,

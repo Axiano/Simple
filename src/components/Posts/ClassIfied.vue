@@ -70,9 +70,10 @@ export default {
   .pageBox {
     width: 90%;
     height: 150px !important;
+    padding: 20px 10px 10px 25px !important;
   }
   .pageBoxs {
-    padding-top: 0 !important;
+    padding-top: 1px !important;
   }
   .pagemargin {
     margin-top: 10px !important;

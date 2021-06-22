@@ -70,7 +70,7 @@
         </el-table-column>
       </el-table>
     </div>
-
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -80,12 +80,10 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-
     }
   },
   created () {
     this.$store.dispatch('getPageList')
-    // console.log(this.pageList)
   },
   methods: {
     successmessage () {
@@ -101,9 +99,6 @@ export default {
         showClose: false
       })
     },
-    removePage (row) {
-      console.log(row)
-    },
     async confirm (id, e) {
       const { data: res } = await this.$http.get(`http://api.axian.fun/my/deletepage/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
@@ -111,13 +106,11 @@ export default {
       this.$store.dispatch('getPageList')
     },
     cancel (e) {
-      console.log(e)
       this.$message.warning('取消删除！')
     },
     editPage (id) {
       this.$store.commit('getNowId', id)
       this.$router.push('/editpage')
-      console.log(this.$store.state.nowId)
     },
     filterHandler (value, row, column) {
       return value === row.pagepath
@@ -134,9 +127,6 @@ export default {
   .pageListBox {
     width: 90% !important;
     /* height: 211px !important; */
-  }
-  .pagedescribe {
-    display: none !important;
   }
 }
 @media screen and (min-width: 501px) {
@@ -155,7 +145,6 @@ export default {
   }
 }
 .pageListH1 {
-  /* margin-top: 50px; */
   text-align: center;
   font-size: 25px;
   font-weight: 500;
@@ -163,64 +152,10 @@ export default {
 .pageListBox {
   padding: 20px;
   width: 400px;
-  height: 600px;
-  margin: 0 auto;
-  /* background-color: teal; */
+  margin: 50px auto;
 }
-.pageBox {
-  position: relative;
-  margin: 15px auto;
-  padding: 20px 20px;
-  width: 360px;
-  height: 100px;
-  background-color: white;
-  border-radius: 15px;
+
+.footer {
+  height: 20px;
 }
-.pagetitle {
-  font-size: 18px;
-  font-weight: 500;
-}
-.pagesm {
-  margin-top: 10px;
-  font-size: 15px;
-}
-.pageclss {
-  position: absolute;
-  top: 0%;
-  left: 59%;
-}
-.pageclass {
-  margin-right: 10px;
-  padding: 5px 8px 5px 8px;
-  font-size: 15px;
-  display: inline-block;
-  background-color: #c2c2c2;
-  border-radius: 7px;
-}
-.pageLabel {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 5px 8px 5px 8px;
-  background-color: #c2c2c241;
-  border-radius: 7px;
-  font-size: 15px;
-}
-/* .removePage {
-  position: absolute;
-  top: 67px;
-  left: 141px;
-  font-size: 15px;
-} */
-/* .demo-table-expand {
-  font-size: 0 !important;
-}
-.demo-table-expand label {
-  width: 90px !important;
-  color: #99a9bf !important;
-}
-.demo-table-expand .el-form-item {
-  margin-right: 0 !important;
-  margin-bottom: 0 !important;
-  width: 50% !important;
-} */
 </style>

@@ -122,7 +122,6 @@ export default {
       this.pageForm.pagepic = res.data[0].pagepic
       this.value = res.data[0].pagecontent
       this.nowPage = res.data[0]
-      console.log(this.nowPage)
     },
     addPage () {
       this.$refs.pageFormRef.validate(async valid => {
@@ -130,7 +129,6 @@ export default {
         this.pageForm.pagecontent = this.value
         const { data: res } = await this.$http.post(`http://api.axian.fun/my/undatepage/${this.$store.state.nowId}`, this.pageForm)
         if (res.status !== 0) return this.nosuccessmessage()
-        window.localStorage.setItem('saveHtml', ' ')
         this.$refs.pageFormRef.resetFields()
         this.successmessage()
         this.$router.push('/pagelist')
@@ -138,7 +136,6 @@ export default {
     },
     inputChange () {
       this.mdhtml = this.$refs.md.d_render
-      window.localStorage.setItem('saveHtml', this.value)
     }
   },
   computed: {

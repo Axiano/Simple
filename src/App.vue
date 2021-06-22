@@ -9,10 +9,6 @@
 </template>
 
 <script>
-const dom = document.querySelector('#id')
-if (dom !== null) {
-  dom.scrollTop = 0
-}
 export default {
   name: 'app',
   components: {
@@ -27,7 +23,6 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getPageList')
   }
 }
 </script>

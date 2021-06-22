@@ -29,7 +29,7 @@
                  style="display: inline-block; width: 15px; height:15px; margin-right: 10px">
               <use xlink:href="#icon-shouye"></use>
             </svg>
-            Welcome
+            返回博客
           </a-menu-item>
           <a-menu-item key="2"
                        @click="goWrite">
@@ -49,15 +49,25 @@
             </svg>
             文章列表
           </a-menu-item>
-          <!-- <a-menu-item key="4">
+          <a-menu-item key="4"
+                       @click="goTimeLinks">
             <svg class="icon"
                  aria-hidden="true"
                  style="display: inline-block; width: 15px; height:15px; margin-right: 10px">
-              <use xlink:href="#icon-caogaoxiang"></use>
+              <use xlink:href="#icon-feichuan2"></use>
             </svg>
-            草稿箱
-          </a-menu-item> -->
+            时光机
+          </a-menu-item>
           <a-menu-item key="5"
+                       @click="getComments">
+            <svg class="icon"
+                 aria-hidden="true"
+                 style="display: inline-block; width: 15px; height:15px; margin-right: 10px">
+              <use xlink:href="#icon-liuyan"></use>
+            </svg>
+            评论管理
+          </a-menu-item>
+          <a-menu-item key="6"
                        @click="goBanck">
             注销
           </a-menu-item>
@@ -99,12 +109,18 @@ export default {
       this.visible = false
     },
     gohome () {
-      this.$router.push('/welcome')
+      this.$router.push('/blog')
       this.visible = false
     },
     goBanck () {
       window.sessionStorage.removeItem('token')
       this.$router.push('/blog')
+    },
+    goTimeLinks () {
+      this.$router.push('/timelinks')
+    },
+    getComments () {
+      this.$router.push('/comment')
     }
   },
   computed: {

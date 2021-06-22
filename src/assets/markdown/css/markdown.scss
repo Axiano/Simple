@@ -608,14 +608,49 @@
   }
 }
 .markdown-body {
-  ul {
-    padding: 0 20px;
-  }
   pre {
     margin: 20px 0;
-    margin: 0 -56px;
+    // margin: 0 -56px;
     // width: 123.7%;
     padding: 20px;
     background-color: #f1f3f4;
+  }
+}
+.markdown-body {
+  pre {
+    padding-bottom: 5px code {
+      padding: 1rem 0 0.5rem 0;
+    }
+    code::before {
+      content: " ";
+      position: absolute;
+      background: #fc625d;
+      border-radius: 50%;
+      box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+      margin-top: -16px;
+      // left: 12px;
+      height: 12px;
+      width: 12px;
+    }
+  }
+}
+
+.markdown-body {
+  h1::before {
+    content: "🌈";
+    visibility: visible;
+    display: inline;
+  }
+
+  h2::before {
+    content: "🚀";
+    visibility: visible;
+    display: inline;
+  }
+
+  h3::before {
+    content: "🔍";
+    visibility: visible;
+    display: inline;
   }
 }
