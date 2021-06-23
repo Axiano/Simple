@@ -27,16 +27,18 @@
           </span>
         </a-card>
         <div class="cardauto">
-          <a-card hoverable
-                  class="aCard cards2">
-            <div class="cardText">
-              <h2>项目 Project</h2> <br />
-              <p class="fontSite">📦 发现新大陆</p>
-            </div>
-            <span class="icon">
-              🗃️
-            </span>
-          </a-card>
+          <router-link to="/project">
+            <a-card hoverable
+                    class="aCard cards2">
+              <div class="cardText">
+                <h2>项目 Project</h2> <br />
+                <p class="fontSite">📦 发现新大陆</p>
+              </div>
+              <span class="icon">
+                🗃️
+              </span>
+            </a-card>
+          </router-link>
         </div>
         <div class="cardauto">
           <a-card hoverable

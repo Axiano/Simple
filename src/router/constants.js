@@ -11,5 +11,9 @@ export default {
   timelinks: '时光机列表',
   times: '时光机-Axian',
   about: '关于-Axian',
-  post: 'Axian\'s Blog'
+  post: 'Axian\'s Blog',
+  posts: 'Axian\'s Blog',
+  comments: '留言板-Axian',
+  project: '项目-Axian',
+  comment: '留言板'
 }

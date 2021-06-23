@@ -20,7 +20,7 @@
                            placeholder="必填"
                            v-model="commentForm.nickname"
                            class="ainput" />
-                  <a-input addon-before="QQ"
+                  <a-input addon-before="Q Q"
                            placeholder="必填"
                            v-model="commentForm.email"
                            class="ainput" />
@@ -135,7 +135,7 @@
                              placeholder="必填"
                              v-model="replyForm.nickname"
                              class="ainput" />
-                    <a-input addon-before="QQ"
+                    <a-input addon-before="Q Q"
                              placeholder="必填"
                              v-model="replyForm.email"
                              class="ainput" />
@@ -162,7 +162,7 @@
                              v-for="(item,i) in emoji1"
                              :key="i"
                              v-html="item.icon"
-                             @click="getimgId(item.text)">
+                             @click="getimgId2(item.text)">
                         </div>
                       </div>
                       <div class="box1"
@@ -171,7 +171,7 @@
                              v-for="(item,i) in emoji2"
                              :key="i"
                              v-html="item.icon"
-                             @click="getimgId(item.text)">
+                             @click="getimgId2(item.text)">
                         </div>
                       </div>
                       <div class="box1"
@@ -180,7 +180,7 @@
                              v-for="(item,i) in emoji3"
                              :key="i"
                              v-html="item.icon"
-                             @click="getimgId(item.text)">
+                             @click="getimgId2(item.text)">
                         </div>
                       </div>
                       <div class="box2">
@@ -257,7 +257,7 @@
                                placeholder="必填"
                                v-model="replyForm.nickname"
                                class="ainput" />
-                      <a-input addon-before="QQ"
+                      <a-input addon-before="Q Q"
                                placeholder="必填"
                                v-model="replyForm.email"
                                class="ainput" />
@@ -284,7 +284,7 @@
                                v-for="(item,i) in emoji1"
                                :key="i"
                                v-html="item.icon"
-                               @click="getimgId(item.text)">
+                               @click="getimgId2(item.text)">
                           </div>
                         </div>
                         <div class="box1"
@@ -293,7 +293,7 @@
                                v-for="(item,i) in emoji2"
                                :key="i"
                                v-html="item.icon"
-                               @click="getimgId(item.text)">
+                               @click="getimgId2(item.text)">
                           </div>
                         </div>
                         <div class="box1"
@@ -302,7 +302,7 @@
                                v-for="(item,i) in emoji3"
                                :key="i"
                                v-html="item.icon"
-                               @click="getimgId(item.text)">
+                               @click="getimgId2(item.text)">
                           </div>
                         </div>
                         <div class="box2 ">
@@ -351,6 +351,7 @@
 import moment from 'moment'
 
 import { mapState } from 'vuex'
+
 moment.locale('zh-cn')
 export default {
   data () {
@@ -382,27 +383,18 @@ export default {
       replyId: '',
       commentId: '',
       clickNum: 0,
-      clickNum2: 0,
-      emoji1: [],
-      emoji2: [],
-      emoji3: []
+      clickNum2: 0
     }
+  },
+  beforeCreate () {
   },
   created () {
+    this.$store.dispatch('getaru')
     this.$store.dispatch('getComments')
     this.$store.dispatch('getReply')
-    this.$store.dispatch('getaru')
-    for (let i = 0; i < 40; i++) {
-      this.emoji1.push(this.aru[i])
-    }
-    for (let i = 40; i < 85; i++) {
-      this.emoji2.push(this.aru[i])
-    }
-    for (let i = 85; i < 116; i++) {
-      this.emoji3.push(this.aru[i])
-    }
   },
   mounted () {
+
   },
   methods: {
     showemojiBoxbtn (text) {
@@ -416,7 +408,10 @@ export default {
       }
     },
     getimgId (text) {
-      document.execCommand('insertText', false, '<' + text + ':')
+      this.commentText = this.commentText + '<' + text + ':'
+    },
+    getimgId2 (text) {
+      this.contentText = this.contentText + '<' + text + ':'
     },
     showBoxbtn (key) {
       this.showBox = key
@@ -431,41 +426,19 @@ export default {
       this.$message.warning('请填写必填项！')
     },
     async addComment () {
-      let contents = this.commentText
-      const matchReg = /(?<=<).*?(?=:)/g
-      if (!contents.match(matchReg)) {
-        this.commentForm.content = contents
-        this.commentForm.nickname.trim()
-        this.commentForm.email.trim()
-        this.commentForm.url.trim()
-        if (this.commentForm.nickname === '' || this.commentForm.email === '' || this.commentForm.url === '') { return this.warning() }
-        this.commentForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-        const { data: res } = await this.$http.post('http://api.axian.fun/api/addcomments', this.commentForm)
-        if (res.status !== 0) return this.error()
-        this.commentForm.nickname = ''
-        this.commentForm.email = ''
-        this.commentForm.url = 'http://'
-        this.commentText = ''
-        this.$store.dispatch('getComments')
-      } else {
-        for (let i = 0; i < contents.match(matchReg).length; i++) {
-          const index = this.aru.findIndex(item => item.text === contents.match(matchReg)[i])
-          contents = contents.replace(contents.match(/<.*?:/g)[i], this.aru[index].icon)
-        }
-        this.commentForm.content = contents
-        this.commentForm.nickname.trim()
-        this.commentForm.email.trim()
-        this.commentForm.url.trim()
-        if (this.commentForm.nickname === '' || this.commentForm.email === '' || this.commentForm.url === '') { return this.warning() }
-        this.commentForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-        const { data: res } = await this.$http.post('http://api.axian.fun/api/addcomments', this.commentForm)
-        if (res.status !== 0) return this.error()
-        this.commentForm.nickname = ''
-        this.commentForm.email = ''
-        this.commentForm.url = 'http://'
-        this.commentText = ''
-        this.$store.dispatch('getComments')
-      }
+      this.commentForm.content = this.commentText
+      this.commentForm.nickname.trim()
+      this.commentForm.email.trim()
+      this.commentForm.url.trim()
+      if (this.commentForm.nickname === '' || this.commentForm.email === '' || this.commentForm.url === '') { return this.warning() }
+      this.commentForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
+      const { data: res } = await this.$http.post('http://api.axian.fun/api/addcomments', this.commentForm)
+      if (res.status !== 0) return this.error()
+      this.commentForm.nickname = ''
+      this.commentForm.email = ''
+      this.commentForm.url = 'http://'
+      this.commentText = ''
+      this.$store.dispatch('getComments')
     },
     changeText (e) {
       this.commentText = e.target.value
@@ -488,53 +461,25 @@ export default {
       }
     },
     async addReplyBtn () {
-      let contents = this.contentText
-      const matchReg = /(?<=<).*?(?=:)/g
-      if (!contents.match(matchReg)) {
-        this.replyForm.content = contents
-        this.replyForm.nickname.trim()
-        this.replyForm.email.trim()
-        this.replyForm.url.trim()
-        if (this.replyForm.nickname === '' || this.replyForm.email === '' || this.replyForm.url === '') { return this.warning() }
-        this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-        const { data: res } = await this.$http.post('http://api.axian.fun/api/addreply', this.replyForm)
-        if (res.status !== 0) return this.error()
-        this.success()
-        this.replyForm.nickname = ''
-        this.replyForm.email = ''
-        this.replyForm.url = ''
-        this.contentText = ''
-        this.replyForm.url = 'http://'
-        this.commentId = ''
-        this.clickNum2 = 0
-        this.clickNum = 0
-        this.replyId = ''
-        this.$store.dispatch('getReply')
-      } else {
-        for (let i = 0; i < contents.match(matchReg).length; i++) {
-          const index = this.aru.findIndex(item => item.text === contents.match(matchReg)[i])
-          contents = contents.replace(contents.match(/<.*?:/g)[i], this.aru[index].icon)
-        }
-        this.replyForm.content = contents
-        this.replyForm.nickname.trim()
-        this.replyForm.email.trim()
-        this.replyForm.url.trim()
-        if (this.replyForm.nickname === '' || this.replyForm.email === '' || this.replyForm.url === '') { return this.warning() }
-        this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-        const { data: res } = await this.$http.post('http://api.axian.fun/api/addreply', this.replyForm)
-        if (res.status !== 0) return this.error()
-        this.success()
-        this.replyForm.nickname = ''
-        this.replyForm.email = ''
-        this.replyForm.url = ''
-        this.contentText = ''
-        this.replyForm.url = 'http://'
-        this.commentId = ''
-        this.replyId = ''
-        this.clickNum2 = 0
-        this.clickNum = 0
-        this.$store.dispatch('getReply')
-      }
+      this.replyForm.content = this.contentText
+      this.replyForm.nickname.trim()
+      this.replyForm.email.trim()
+      this.replyForm.url.trim()
+      if (this.replyForm.nickname === '' || this.replyForm.email === '' || this.replyForm.url === '') { return this.warning() }
+      this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
+      const { data: res } = await this.$http.post('http://api.axian.fun/api/addreply', this.replyForm)
+      if (res.status !== 0) return this.error()
+      this.success()
+      this.replyForm.nickname = ''
+      this.replyForm.email = ''
+      this.replyForm.url = ''
+      this.contentText = ''
+      this.replyForm.url = 'http://'
+      this.commentId = ''
+      this.clickNum2 = 0
+      this.clickNum = 0
+      this.replyId = ''
+      this.$store.dispatch('getReply')
     },
     addReply2 (id, nickname) {
       this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
@@ -552,7 +497,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['comments', 'reply', 'aru'])
+    ...mapState(['comments', 'reply', 'aru', 'emoji1', 'emoji2', 'emoji3'])
   }
 }
 </script>
@@ -568,7 +513,7 @@ export default {
   }
   .emoji {
     width: 240px !important;
-    height: 150px !important;
+    height: 180px !important;
   }
 }
 @media screen and (min-width: 501px) {

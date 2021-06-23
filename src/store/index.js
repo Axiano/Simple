@@ -16,7 +16,10 @@ export default new Vuex.Store({
     pno: 0,
     size: 6,
     total: 0,
-    aru: []
+    aru: [],
+    emoji1: [],
+    emoji2: [],
+    emoji3: []
   },
   mutations: {
     initPostList (state, data) {
@@ -46,6 +49,15 @@ export default new Vuex.Store({
     },
     changearu (state, data) {
       state.aru = data
+      for (let i = 0; i < 40; i++) {
+        state.emoji1.push(state.aru[i])
+      }
+      for (let i = 40; i < 85; i++) {
+        state.emoji2.push(state.aru[i])
+      }
+      for (let i = 85; i < 116; i++) {
+        state.emoji3.push(state.aru[i])
+      }
     }
   },
   actions: {
@@ -70,12 +82,11 @@ export default new Vuex.Store({
       state.commit('changeReply', res.data)
     },
     getaru (state) {
-      axios.get('./js/aru.json').then(response => {
+      axios.get('/aru.json').then(response => {
         state.commit('changearu', response.data.aru.container)
       })
     }
   },
   getters: {
-
   }
 })

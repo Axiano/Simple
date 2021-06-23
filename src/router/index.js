@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import NoPage from '../views/404.vue'
 import Home from '../views/Home.vue'
+import Project from '../views/Projext.vue'
 import Blog from '../views/Blog.vue'
 import Login from '../components/Login/Login.vue'
 import Index from '../components/Login/index.vue'
@@ -18,13 +19,15 @@ import Tags from '../components/Posts/tags.vue'
 import Times from '../components/Posts/Times.vue'
 import indexTimes from '../components/page/timelink.vue'
 import constants from './constants'
-import Music from '../components/music.vue'
+// import Music from '../components/music.vue'
 import Comments from '../components/Posts/comments.vue'
 import Comment from '../components/page/Comment.vue'
 const routes = [
   { path: '*', component: NoPage },
   { path: '/', component: Home, name: 'home' },
-  { path: '/music', component: Music },
+  { path: '/project', component: Project, name: 'project' },
+
+  // { path: '/music', component: 'Music' },
   {
     path: '/blog',
     component: Blog,
@@ -35,7 +38,7 @@ const routes = [
         component: Post,
         name: 'post',
         children: [
-          { path: '/post/*', name: 'post' }
+          { path: '/post/*', name: 'posts' }
         ]
       },
       { path: '/about', component: About, name: 'about' },
@@ -43,6 +46,7 @@ const routes = [
       { path: '/tags', component: Tags, name: 'tags' },
       { path: '/times', component: Times, name: 'times' },
       { path: '/comments', component: Comments, name: 'comments' }
+
     ]
   },
   { path: '/login', component: Login, name: 'login' },
@@ -67,6 +71,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 // vue实现路由切换改变title

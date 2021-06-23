@@ -122,6 +122,9 @@ export default {
       const { data: res } = await this.$http.post('http://api.axian.fun/my/addlink', this.timeForm)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('添加成功！')
+      this.timeForm.time = ''
+      this.timeForm.timeinfo = ''
+      this.timeForm.timecontent = ''
       this.$store.dispatch('getTimeLinks')
     },
     showtimelink () {
