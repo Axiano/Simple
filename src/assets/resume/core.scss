@@ -1,0 +1,180 @@
+#wrapper {
+  position: relative;
+  width: 1024px;
+  margin: 50px auto 30px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 15px #c0c0c0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  animation: fadeUp 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media screen and (max-width: 1024px) {
+  #wrapper {
+    margin: 0;
+    box-shadow: none;
+    width: auto;
+    border-radius: 0;
+  }
+}
+#wrapper .basic {
+  padding: 20px 30px 20px 30px;
+  background: #5fb878;
+}
+#wrapper .basic section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic section {
+    display: block;
+  }
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic section h1,
+  #wrapper .basic section h2 {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic section h2 {
+    padding-top: 20px;
+  }
+}
+#wrapper .basic section .left {
+  font-weight: 400;
+  font-size: 48px;
+  color: #fff;
+}
+#wrapper .basic section .left small {
+  color: #fff;
+  font-size: 24px;
+}
+#wrapper .basic section .right {
+  font-size: 20px;
+  color: #fff;
+}
+#wrapper .basic section .right small {
+  font-size: 14px;
+  color: #fff;
+}
+#wrapper .basic .relative {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic .relative {
+    display: block;
+  }
+}
+#wrapper .basic .relative .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 14px;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic .relative .left {
+    text-align: center;
+    line-height: 30px;
+  }
+}
+#wrapper .basic .relative .left div {
+  color: #fff;
+}
+#wrapper .basic .relative .right {
+  line-height: 22px;
+  font-size: 14px;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic .relative .right {
+    display: flex;
+    justify-content: center;
+  }
+}
+#wrapper .basic .relative .right a {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#wrapper .basic .relative .right a i {
+  padding-left: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic .relative .right a i {
+    padding-right: 10px;
+  }
+}
+#wrapper .basic .relative .right a span {
+  color: #fff;
+}
+@media screen and (max-width: 720px) {
+  #wrapper .basic .relative .right a span {
+    display: none;
+  }
+}
+#wrapper .skill,
+#wrapper .exp,
+#wrapper .project {
+  padding: 10px 30px;
+}
+#wrapper .skill h5,
+#wrapper .exp h5,
+#wrapper .project h5 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  color: 12px;
+}
+#wrapper .skill ul,
+#wrapper .exp ul,
+#wrapper .project ul {
+  padding: 10px 0 5px 20px;
+}
+#wrapper .skill ul li,
+#wrapper .exp ul li,
+#wrapper .project ul li {
+  line-height: 1.5;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+#wrapper .skill {
+  padding-top: 20px;
+}
+#wrapper .exp li {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 10px;
+}
+#wrapper .exp li .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+#wrapper .exp li .title .name {
+  font-weight: bold;
+}
+#wrapper .exp li .title a {
+  transition: all 0.5s;
+}
+#wrapper .exp li .title a:hover {
+  cursor: pointer;
+  background: #5fb878;
+  color: #fff;
+}
+#wrapper .exp li .des {
+  padding: 5px 0 10px 0;
+  line-height: 1.5;
+}
+#wrapper .exp li .stack {
+  text-align: left;
+}
+#wrapper .project ul li a {
+  color: #5fb878;
+  text-decoration: underline;
+}

@@ -54,6 +54,7 @@ header {
   width: 100%;
   height: 60px;
   background-color: rgba(250, 250, 250, 0.8);
+  z-index: 1200;
 }
 
 .headerH1 {
@@ -63,6 +64,7 @@ header {
   font-weight: 700;
   height: 60px;
   line-height: 60px;
+  z-index: 1201;
 }
 .myinfo {
   margin: 0 auto;

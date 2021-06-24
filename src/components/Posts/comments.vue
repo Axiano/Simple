@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="pageInfo">
-      <div class="pageInfoH1">💬留言板</div>
+      <div class="pageInfoH1">
+        <a-icon type="message" />留言板
+      </div>
       <div class="pageInfodescribe">
       </div>
     </div>

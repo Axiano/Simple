@@ -37,7 +37,7 @@
             <!-- <div class="card-header"
              style="padding-bottom: 15px;">背面头部文字</div> -->
             <div class="card-content center">
-              <p v-bind:style="{fontSize: '25px', fontWeight: 'bold'}">我的博客项目</p>
+              <p v-bind:style="{fontSize: '25px', fontWeight: 'bold'}">Simple</p>
               <div class="tags">
                 <a href="javascipt:;">
                   <a-tag color="#108ee9"
@@ -46,7 +46,8 @@
                     Demo
                   </a-tag>
                 </a>
-                <a href="javascipt:;">
+                <a href="https://github.com/Axiano/Vue-MyBlog"
+                   target="_block">
                   <a-tag color="black"
                          class="tag">
                     <a-icon type="github" />

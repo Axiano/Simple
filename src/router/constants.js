@@ -15,5 +15,6 @@ export default {
   posts: 'Axian\'s Blog',
   comments: '留言板-Axian',
   project: '项目-Axian',
+  resume: '简历-Axian',
   comment: '留言板'
 }

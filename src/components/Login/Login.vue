@@ -85,7 +85,7 @@ export default {
         }
         this.successmessage()
         window.sessionStorage.setItem('token', res.token)
-        this.$router.push('/index')
+        this.$router.push('/welcome')
       })
     }
   },

@@ -1,0 +1,76 @@
+# 配置
+conf:
+  # 最后更新时间
+  # last: 2021年1月19日 14点31分
+  # pdf简历url
+  # pdf: https://www.mozzie.cn/resume.pdf
+  # 各级标题
+  lv:
+    l1: 技能清单
+    l2: 项目经验
+    l3: 作品
+    l4: ''
+    l5: 技术栈
+
+# 基础信息
+basic:
+  cnName: 王鑫
+  # enName: mozzie
+  sex: 男
+  birth: 1999年10月17
+  objective: 前端开发
+  city: 北京
+  overall: 本科 / 2022年毕业 · 找实习ing
+  college: 鄂尔多斯应用技术学院
+  phone: 15149494081
+  email: 577914237@qq.com
+  # 别再前面加https和www
+  homepage: axian.fun
+  # 别再前面加https和www
+  git: github.com/Axiano
+
+# 技能清单
+skill:
+  - 以下内容，客观公正，手敲的：
+  - 具备扎实的`HTML`、JavaScript、CSS等技术、熟练使用JQ库
+  - 熟练使用前端自动化构建工具，Webpack(记不住配置项，查文档)
+  - 熟练使用node.js，使用并基本了解express后端框架
+  - 注重规范化开发,具有良好的沟通能力、团队合作精神及解决问题的能力
+  - 熟练前后端分离开发模式，微信公众号
+  - 熟悉掌握Vue，及相关周边生态，熟悉es6标准。
+  - 熟悉团队开发流程，熟练使用git工具进行代码管理
+
+# 项目经验
+exp:
+  - name: vue博客
+    # 如果一行太长，使用 - 拆分
+    des:
+      - 自己真正独立打开的 vue 项目，博客使用“vue + epxress” 实时更新文章。
+      - 因为一次开发，许多东西需要日后技术沉淀优化
+    # 使用' '隔开
+    stack: Vue/express/Axios/sass/Webpack/Ant-Design
+
+  - name: 电商后台管理系统
+    # des中，`强调的文字` || ``强调的文字``
+    des:
+      - 因为学完vue没有项目的思路和经验，在网上看视频查资料做出来的
+    # 非必须
+    stack: vue/webpack/vue-router/element-ui/Axios
+    
+# 作品
+project:
+  - title: Simple
+    link: https://www.axian.fn
+    des: 一个基于Vue开发的运行时类博客文档，用于代码笔记
+
+  - title: 电商后台管理
+    link: https://github.com/chenrrrrr/typecho-theme-Moz
+    des: 在学习vue开发时，练手项目
+
+  # - title: choi
+  #   link: https://resume.mozzie.cn
+  #   des: 填写yaml，自动化构建响应式简历，适配网页A4打印
+
+  # - title: Yuna
+  #   link: https://github.com/chenrrrrr/Yuna
+  #   des: 基于vue、webpack构建，对typecho主题由ssr服务器端渲染，改造成了spa应用，从而使得typecho主题开发、迭代版本、功能时，变得更加得心应手。

@@ -8,6 +8,7 @@
     </div>
     <div class="postBox">
       <div class="pagecontent markdown-body"
+           v-highlight
            v-html="pagecontent">
       </div>
     </div>
@@ -17,8 +18,9 @@
 
 <script>
 import marked from 'marked'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/atom-one-dark.css'
+// import hljs from 'highlight.js'
+// import 'highlight.js/styles/atom-one-dark.css'
+import '../assets/markdown/css/markdown.scss'
 
 export default {
   data () {
@@ -33,21 +35,21 @@ export default {
     this.getPost(path)
   },
   mounted () {
-    var rendererMD = new marked.Renderer()
-    marked.setOptions({
-      renderer: rendererMD,
-      highlight: function (code) {
-        return hljs.highlightAuto(code).value
-      },
-      pedantic: false,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
-      xhtml: false
-    })
+    // var rendererMD = new marked.Renderer()
+    // marked.setOptions({
+    //   renderer: rendererMD,
+    //   highlight: function (code) {
+    //     return hljs.highlightAuto(code).value
+    //   },
+    //   pedantic: false,
+    //   gfm: true,
+    //   tables: true,
+    //   breaks: false,
+    //   sanitize: false,
+    //   smartLists: true,
+    //   smartypants: false,
+    //   xhtml: false
+    // })
   },
   methods: {
     async getPost (path) {

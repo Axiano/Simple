@@ -23,7 +23,8 @@
             <p class="fontSite">✏️ 随便写写</p>
           </div>
           <span class="icon">
-            📖
+            <!-- 📖 -->
+            <a-icon type="book" />
           </span>
         </a-card>
         <div class="cardauto">
@@ -31,26 +32,34 @@
             <a-card hoverable
                     class="aCard cards2">
               <div class="cardText">
-                <h2>项目 Project</h2> <br />
-                <p class="fontSite">📦 发现新大陆</p>
+                <h2 style="color: black;">项目 Project</h2> <br />
+                <p class="fontSite"
+                   style="color: black;">📦 发现新大陆</p>
               </div>
               <span class="icon">
-                🗃️
+                <!-- 🗃️ -->
+                <a-icon type="dropbox"
+                        style="color: black;" />
               </span>
             </a-card>
           </router-link>
         </div>
         <div class="cardauto">
-          <a-card hoverable
-                  class="aCard cards3">
-            <div class="cardText">
-              <h2>博客 Blog</h2> <br />
-              <p class="fontSite">✏️ 涨知识</p>
-            </div>
-            <span class="icon">
-              📦
-            </span>
-          </a-card>
+          <router-link to="/resume">
+            <a-card hoverable
+                    class="aCard cards3">
+              <div class="cardText">
+                <h2 style="color: black;">简历 Resume</h2> <br />
+                <p class="fontSite"
+                   style="color: black">📑 我的简历</p>
+              </div>
+              <span class="icon">
+                <!-- 📄 -->
+                <a-icon type="profile"
+                        style="color: black" />
+              </span>
+            </a-card>
+          </router-link>
         </div>
       </div>
     </div>
@@ -73,7 +82,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style long="scss" scoped>
 .box {
   /* position: relative;
   left: 50%; */
@@ -124,7 +133,7 @@ export default {
   background-color: #2f93f7;
 }
 .cards3 {
-  background-color: #24292e;
+  background-color: #50d850;
 }
 h2 {
   color: white;

@@ -38,8 +38,10 @@
           </el-form-item>
         </a-collapse-panel>
       </a-collapse>
-      <button @click="addPage"
-              :style="btnstyle">写完啦</button>
+      <router-link to="/pagelist">
+        <button @click="addPage"
+                :style="btnstyle">写完啦</button>
+      </router-link>
     </el-form>
 
     <div class="writeBox">
@@ -121,9 +123,8 @@ export default {
         if (res.status !== 0) return this.nosuccessmessage()
         window.localStorage.setItem('saveHtml', ' ')
         // this.$refs.pageFormRef.clearSelection()
-        this.$refs.pageFormRef.resetFields()
+        // this.$refs.pageFormRef.resetFields()
         this.successmessage()
-        this.$router.push('/pagelist')
       })
     },
     inputChange () {
@@ -142,9 +143,10 @@ export default {
         duration: 0,
         message: '写作提醒',
         description:
-          `✏️在地址栏内填写 "草稿" 可自动生成草稿。
-          ✏️文章分类只能填写一种。
-          ✏️如果填写多个标签以空格相隔。 `,
+          `地址栏内写地址千万不要加 “/”，直接写地址的名字就可以了。
+          在地址栏内填写 "草稿" 可自动生成草稿。
+          文章分类只能填写一种。
+          如果填写多个标签以空格相隔。 `,
         icon: <a-icon type="smile" style="color: #108ee9" />
       })
     }

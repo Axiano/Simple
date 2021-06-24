@@ -1,33 +1,65 @@
-/* eslint-disable no-eval */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import NoPage from '../views/404.vue'
-import Home from '../views/Home.vue'
-import Project from '../views/Projext.vue'
-import Blog from '../views/Blog.vue'
-import Login from '../components/Login/Login.vue'
-import Index from '../components/Login/index.vue'
-import Welcome from '../components/page/welcome.vue'
-import PageList from '../components/page/PageList.vue'
-import WirtePage from '../components/page/WritePage.vue'
-import EditPage from '../components/page/EditPage.vue'
-import Bloghome from '../views/blog/Bloghome.vue'
-import Post from '../components/Post.vue'
-import About from '../components/About.vue'
-import Classified from '../components/Posts/ClassIfied.vue'
-import Tags from '../components/Posts/tags.vue'
-import Times from '../components/Posts/Times.vue'
-import indexTimes from '../components/page/timelink.vue'
 import constants from './constants'
+
+const NoPage = () => import(/* webpackChunkName: "NoPage" */ '../views/404.vue')
+
+const Home = () => import(/* webpackChunkName: "home_nopage_Project_Resume" */ '../views/Home.vue')
+const Project = () => import(/* webpackChunkName: "home_nopage_Project_Resume" */ '../views/Projext.vue')
+const Resume = () => import(/* webpackChunkName: "home_nopage_Project_Resume" */ '../views/Resume.vue')
+
+const Blog = () => import(/* webpackChunkName: "Blog_Bloghome_Postt" */ '../views/Blog.vue')
+const Bloghome = () => import(/* webpackChunkName: "home_Bloghome_Post" */ '../views/blog/Bloghome.vue')
+const Post = () => import(/* webpackChunkName: "home_Bloghome_Post" */ '../components/Post.vue')
+
+const About = () => import(/* webpackChunkName: "About_Classified_Tags_Times_Comment" */ '../components/About.vue')
+const Classified = () => import(/* webpackChunkName: "About_Classified_Tags_Times_Comment" */ '../components/Posts/ClassIfied.vue')
+const Tags = () => import(/* webpackChunkName: "About_Classified_Tags_Times_Comment" */ '../components/Posts/tags.vue')
+const Times = () => import(/* webpackChunkName: "About_Classified_Tags_Times_Comment" */ '../components/Posts/Times.vue')
+const Comment = () => import(/* webpackChunkName: "About_Classified_Tags_Times_Comment" */ '../components/page/Comment.vue')
+
+const Login = () => import(/* webpackChunkName: "Login_Index_Welcome" */ '../components/Login/Login.vue')
+const Index = () => import(/* webpackChunkName: "About_Index_Welcome" */ '../components/Login/index.vue')
+const Welcome = () => import(/* webpackChunkName: "About_Index——Welcome" */ '../components/page/welcome.vue')
+
+const PageList = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTime_Comments" */ '../components/page/PageList.vue')
+const WirtePage = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/page/WritePage.vue')
+const EditPage = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/page/EditPage.vue')
+const indexTimes = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/page/timelink.vue')
+const Comments = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/Posts/comments.vue')
+
+
+// import NoPage from '../views/404.vue'
+// import Home from '../views/Home.vue'
+// import Project from '../views/Projext.vue'
+// import Resume from '../views/Resume.vue'
+
+// import Blog from '../views/Blog.vue'
+// import Bloghome from '../views/blog/Bloghome.vue'
+// import Post from '../components/Post.vue'
+
+// import About from '../components/About.vue'
+// import Classified from '../components/Posts/ClassIfied.vue'
+// import Tags from '../components/Posts/tags.vue'
+// import Times from '../components/Posts/Times.vue'
+// import Comment from '../components/page/Comment.vue'
+
+// import Login from '../components/Login/Login.vue'
+// import Index from '../components/Login/index.vue'
+// import Welcome from '../components/page/welcome.vue'
+
+// import PageList from '../components/page/PageList.vue'
+// import WirtePage from '../components/page/WritePage.vue'
+// import EditPage from '../components/page/EditPage.vue'
+// import indexTimes from '../components/page/timelink.vue'
 // import Music from '../components/music.vue'
-import Comments from '../components/Posts/comments.vue'
-import Comment from '../components/page/Comment.vue'
+// import Comments from '../components/Posts/comments.vue'
+
 const routes = [
   { path: '*', component: NoPage },
   { path: '/', component: Home, name: 'home' },
   { path: '/project', component: Project, name: 'project' },
-
-  // { path: '/music', component: 'Music' },
+  { path: '/resume', component: Resume, name: 'resume' },
   {
     path: '/blog',
     component: Blog,

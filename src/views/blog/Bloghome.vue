@@ -125,8 +125,6 @@
 </template>
 
 <script>
-import '../../assets/markdown/css/markdown.scss'
-import '../../assets/markdown/css/code.scss'
 
 export default {
   data () {

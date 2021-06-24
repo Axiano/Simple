@@ -38,9 +38,10 @@
           </el-form-item>
         </a-collapse-panel>
       </a-collapse>
-      <button @click="addPage"
-              :style="btnstyle">改完啦</button>
-
+      <router-link to="/pagelist">
+        <button @click="addPage"
+                :style="btnstyle">改完啦</button>
+      </router-link>
     </el-form>
     <div class="writeBox">
       <mavon-editor v-model="value"
@@ -129,9 +130,9 @@ export default {
         this.pageForm.pagecontent = this.value
         const { data: res } = await this.$http.post(`http://api.axian.fun/my/undatepage/${this.$store.state.nowId}`, this.pageForm)
         if (res.status !== 0) return this.nosuccessmessage()
-        this.$refs.pageFormRef.resetFields()
+        // this.$refs.pageFormRef.resetFields()
         this.successmessage()
-        this.$router.push('/pagelist')
+        // this.$router.push({ name: 'postlist' })
       })
     },
     inputChange () {

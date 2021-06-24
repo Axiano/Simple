@@ -177,9 +177,6 @@ export default {
     },
     cancel (e) {
       this.$message.warning('取消删除！')
-    },
-    selectEmoji (emoji) {
-      console.log(emoji)
     }
   },
   computed: {

@@ -1,0 +1,43 @@
+.print {
+  body {
+    padding-top: 0;
+  }
+  body #wrapper {
+    width: 1024px;
+    height: 1450px;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    padding-bottom: 40px;
+  }
+  body #wrapper .basic section .left,
+  body #wrapper .basic section .right {
+    color: #333;
+  }
+  body #wrapper .basic section .left small,
+  body #wrapper .basic section .right small {
+    color: #333;
+  }
+  body #wrapper .basic .relative .left div {
+    color: #333;
+  }
+  body #wrapper .basic .relative .right a i {
+    color: #333;
+  }
+  body #wrapper .basic .relative .right a span {
+    color: #333;
+  }
+  body .pdf {
+    display: none;
+  }
+  body .last-modify {
+    position: absolute;
+    z-index: 1;
+    width: 970px;
+    top: auto;
+    bottom: 25px;
+    text-align: left;
+    padding-left: 20px;
+    color: #d1d1d1;
+  }
+}
