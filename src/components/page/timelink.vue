@@ -112,14 +112,14 @@ export default {
       })
     },
     async confirm (id, e) {
-      const { data: res } = await this.$http.get(`http://api.axian.fun/my/deletelink/${id}`)
+      const { data: res } = await this.$http.get(`https://api.axian.fun/my/deletelink/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('成功删除！')
       this.$store.dispatch('getTimeLinks')
     },
     async addtimelink () {
       if (this.timeForm.timecontent === '') return this.$message.error('请填写内容')
-      const { data: res } = await this.$http.post('http://api.axian.fun/my/addlink', this.timeForm)
+      const { data: res } = await this.$http.post('https://api.axian.fun/my/addlink', this.timeForm)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('添加成功！')
       this.timeForm.time = ''
@@ -171,7 +171,6 @@ export default {
     },
     async getTianQi () {
       var result = await this.$http.get('http://wthrcdn.etouch.cn/weather_mini?city=北京')
-      // console.log(result.data.data.forecast)
       const weather = result.data.data.forecast[0].type
       this.timeForm.time += ' ' + weather
     },

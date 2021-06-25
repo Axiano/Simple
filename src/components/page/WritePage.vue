@@ -49,6 +49,7 @@
                     class="mavonBox"
                     :autofocus="false"
                     ref="md"
+                    :ishljs="false"
                     @change="inputChange" />
     </div>
   </div>
@@ -95,7 +96,9 @@ export default {
     }
   },
   created () {
-    this.value = window.localStorage.getItem('saveHtml')
+    if (window.localStorage.getItem('saveHtml')) {
+      this.value = window.localStorage.getItem('saveHtml')
+    }
     this.getTime()
     this.info()
   },
@@ -119,17 +122,14 @@ export default {
       this.$refs.pageFormRef.validate(async valid => {
         if (!valid) return
         this.pageForm.pagecontent = this.value
-        const { data: res } = await this.$http.post('http://api.axian.fun/my/addpage', this.pageForm)
+        const { data: res } = await this.$http.post('https://api.axian.fun/my/addpage', this.pageForm)
         if (res.status !== 0) return this.nosuccessmessage()
         window.localStorage.setItem('saveHtml', ' ')
-        // this.$refs.pageFormRef.clearSelection()
-        // this.$refs.pageFormRef.resetFields()
         this.successmessage()
       })
     },
     inputChange () {
-      this.mdhtml = this.$refs.md.d_render
-      window.localStorage.setItem('saveHtml', this.value)
+      window.localStorage.setItem('saveHtml', this.$refs.md.d_value)
     },
     getTime () {
       const tm = new Date()

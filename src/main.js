@@ -11,7 +11,6 @@ import mavonEditor from 'mavon-editor'
 
 // import VueLazyload from 'vue-lazyload'
 import yaml from 'js-yaml'
-
 // js 引入
 // import Antd from 'ant-design-vue'
 
@@ -43,12 +42,11 @@ Vue.prototype.$http = axios
 Vue.prototype.$notify = Notification
 Vue.prototype.$Y = yaml
 
-Vue.directive('highlight', function (el) {
-  let blocks = el.querySelectorAll('pre code');
-  blocks.forEach((block) => {
-    hljs.highlightBlock(block)
-  })
-})
+Vue.directive('highlight', (event) => {
+  document.querySelectorAll('pre code').forEach((el) => {
+    hljs.highlightElement(el);
+  });
+});
 // 挂在js挂在 vue
 Vue.use(mavonEditor)
 // Vue.use(Antd)

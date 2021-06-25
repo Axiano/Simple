@@ -41,6 +41,7 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('getPageList')
   },
   methods: {
     IsContain (item) {

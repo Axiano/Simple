@@ -62,23 +62,23 @@ export default new Vuex.Store({
   },
   actions: {
     async getPageList (state) {
-      const { data: res } = await axios.get('http://api.axian.fun/api/pages')
+      const { data: res } = await axios.get('https://api.axian.fun/api/pages')
       state.commit('initPostList', res.data)
     },
     async getTotal (state) {
-      const { data: res } = await axios.get('http://api.axian.fun/api/pages')
+      const { data: res } = await axios.get('https://api.axian.fun/api/pages')
       state.commit('changeTotal', res.data.length)
     },
     async getTimeLinks (state) {
-      const { data: res } = await axios.get('http://api.axian.fun/api/timelinks')
+      const { data: res } = await axios.get('https://api.axian.fun/api/timelinks')
       state.commit('changeTimelinks', res.data)
     },
     async getComments (state) {
-      const { data: res } = await axios.get('http://api.axian.fun/api/getcomments')
+      const { data: res } = await axios.get('https://api.axian.fun/api/getcomments')
       state.commit('changeComments', res.data)
     },
     async getReply (state) {
-      const { data: res } = await axios.get('http://api.axian.fun/api/getreply')
+      const { data: res } = await axios.get('https://api.axian.fun/api/getreply')
       state.commit('changeReply', res.data)
     },
     getaru (state) {

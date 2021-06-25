@@ -434,11 +434,11 @@ export default {
       this.commentForm.url.trim()
       if (this.commentForm.nickname === '' || this.commentForm.email === '' || this.commentForm.url === '') { return this.warning() }
       this.commentForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-      const { data: res } = await this.$http.post('http://api.axian.fun/api/addcomments', this.commentForm)
+      const { data: res } = await this.$http.post('https://api.axian.fun/api/addcomments', this.commentForm)
       if (res.status !== 0) return this.error()
       this.commentForm.nickname = ''
       this.commentForm.email = ''
-      this.commentForm.url = 'http://'
+      this.commentForm.url = 'https://'
       this.commentText = ''
       this.$store.dispatch('getComments')
     },
@@ -449,7 +449,7 @@ export default {
       this.contentText = e.target.value
     },
     commentavatar (qq) {
-      return `http://q1.qlogo.cn/g?b=qq&nk=${qq}&s=100`
+      return `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=100`
     },
     addReply (id, nickname, fid) {
       this.clickNum++
@@ -469,14 +469,14 @@ export default {
       this.replyForm.url.trim()
       if (this.replyForm.nickname === '' || this.replyForm.email === '' || this.replyForm.url === '') { return this.warning() }
       this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-      const { data: res } = await this.$http.post('http://api.axian.fun/api/addreply', this.replyForm)
+      const { data: res } = await this.$http.post('https://api.axian.fun/api/addreply', this.replyForm)
       if (res.status !== 0) return this.error()
       this.success()
       this.replyForm.nickname = ''
       this.replyForm.email = ''
       this.replyForm.url = ''
       this.contentText = ''
-      this.replyForm.url = 'http://'
+      this.replyForm.url = 'https://'
       this.commentId = ''
       this.clickNum2 = 0
       this.clickNum = 0

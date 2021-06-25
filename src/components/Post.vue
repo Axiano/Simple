@@ -18,14 +18,11 @@
 
 <script>
 import marked from 'marked'
-// import hljs from 'highlight.js'
-// import 'highlight.js/styles/atom-one-dark.css'
 import '../assets/markdown/css/markdown.scss'
 
 export default {
   data () {
     return {
-      code: '```javascript\nfunction(){\n\tconsole.log(123)\n}\n```',
       postInfo: [],
       pagecontent: ''
     }
@@ -35,31 +32,15 @@ export default {
     this.getPost(path)
   },
   mounted () {
-    // var rendererMD = new marked.Renderer()
-    // marked.setOptions({
-    //   renderer: rendererMD,
-    //   highlight: function (code) {
-    //     return hljs.highlightAuto(code).value
-    //   },
-    //   pedantic: false,
-    //   gfm: true,
-    //   tables: true,
-    //   breaks: false,
-    //   sanitize: false,
-    //   smartLists: true,
-    //   smartypants: false,
-    //   xhtml: false
-    // })
   },
   methods: {
     async getPost (path) {
-      const { data: res } = await this.$http.get(`http://api.axian.fun/api/getpagebypath/${path}`)
+      const { data: res } = await this.$http.get(`https://api.axian.fun/api/getpagebypath/${path}`)
       this.postInfo = res.data[0]
       this.pagecontent = marked(res.data[0].pagecontent)
     }
   },
   computed: {
-
   }
 }
 </script>

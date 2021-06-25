@@ -100,7 +100,7 @@ export default {
       })
     },
     async confirm (id, e) {
-      const { data: res } = await this.$http.get(`http://api.axian.fun/my/deletepage/${id}`)
+      const { data: res } = await this.$http.get(`https://api.axian.fun/my/deletepage/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('成功删除！')
       this.$store.dispatch('getPageList')
