@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async getPost (path) {
-      const { data: res } = await this.$http.get(`https://api.axian.fun/api/getpagebypath/${path}`)
+      const { data: res } = await this.$http.get(`api/getpagebypath/${path}`)
       this.postInfo = res.data[0]
       this.pagecontent = marked(res.data[0].pagecontent)
     }

@@ -101,13 +101,13 @@ export default {
       return `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=100`
     },
     async removecomment (id) {
-      const { data: res } = await this.$http.get(`https://api.axian.fun/my/deletecomments/${id}`)
+      const { data: res } = await this.$http.get(`my/deletecomments/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('成功删除！')
       this.$store.dispatch('getComments')
     },
     async removereply (id) {
-      const { data: res } = await this.$http.get(`https://api.axian.fun/my/deletereply/${id}`)
+      const { data: res } = await this.$http.get(`my/deletereply/${id}`)
       if (res.status !== 0) return this.nosuccessmessage()
       this.$message.success('成功删除！')
       this.$store.dispatch('getReply')

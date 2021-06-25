@@ -113,7 +113,7 @@ export default {
       })
     },
     async getNowPage () {
-      const { data: res } = await this.$http.get(`https://api.axian.fun/my/getpage/${this.$store.state.nowId}`)
+      const { data: res } = await this.$http.get(`my/getpage/${this.$store.state.nowId}`)
       this.pageForm.pagepath = res.data[0].pagepath
       this.pageForm.pagetitle = res.data[0].pagetitle
       this.pageForm.pagedescribe = res.data[0].pagedescribe
@@ -128,7 +128,7 @@ export default {
       this.$refs.pageFormRef.validate(async valid => {
         if (!valid) return
         this.pageForm.pagecontent = this.value
-        const { data: res } = await this.$http.post(`https://api.axian.fun/my/undatepage/${this.$store.state.nowId}`, this.pageForm)
+        const { data: res } = await this.$http.post(`my/undatepage/${this.$store.state.nowId}`, this.pageForm)
         if (res.status !== 0) return this.nosuccessmessage()
         // this.$refs.pageFormRef.resetFields()
         this.successmessage()

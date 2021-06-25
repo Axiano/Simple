@@ -147,12 +147,12 @@ export default {
   },
   methods: {
     async getPageList () {
-      const { data: res } = await this.$http.get('https://api.axian.fun/api/lists', { params: { pno: this.current--, size: this.size } })
+      const { data: res } = await this.$http.get('api/lists', { params: { pno: this.current--, size: this.size } })
       this.postList = res
       this.current++
     },
     async getTotal () {
-      const { data: res } = await this.$http.get('https://api.axian.fun/api/showtotalnum')
+      const { data: res } = await this.$http.get('api/showtotalnum')
       this.total = res[0].total
     },
     goTagPage (tag) {

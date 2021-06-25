@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-
+axios.defaults.baseURL = 'https://demoapi.axian.fun/'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -62,27 +62,27 @@ export default new Vuex.Store({
   },
   actions: {
     async getPageList (state) {
-      const { data: res } = await axios.get('https://api.axian.fun/api/pages')
+      const { data: res } = await axios.get('api/pages')
       state.commit('initPostList', res.data)
     },
     async getTotal (state) {
-      const { data: res } = await axios.get('https://api.axian.fun/api/pages')
+      const { data: res } = await axios.get('api/pages')
       state.commit('changeTotal', res.data.length)
     },
     async getTimeLinks (state) {
-      const { data: res } = await axios.get('https://api.axian.fun/api/timelinks')
+      const { data: res } = await axios.get('api/timelinks')
       state.commit('changeTimelinks', res.data)
     },
     async getComments (state) {
-      const { data: res } = await axios.get('https://api.axian.fun/api/getcomments')
+      const { data: res } = await axios.get('api/getcomments')
       state.commit('changeComments', res.data)
     },
     async getReply (state) {
-      const { data: res } = await axios.get('https://api.axian.fun/api/getreply')
+      const { data: res } = await axios.get('api/getreply')
       state.commit('changeReply', res.data)
     },
     getaru (state) {
-      axios.get('/aru.json').then(response => {
+      axios.get('https://axian.fun/aru.json').then(response => {
         state.commit('changearu', response.data.aru.container)
       })
     }

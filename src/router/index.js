@@ -28,33 +28,6 @@ const EditPage = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_
 const indexTimes = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/page/timelink.vue')
 const Comments = () => import(/* webpackChunkName: "PageList_WirtePage_EditPage_indexTimes_Comments" */ '../components/Posts/comments.vue')
 
-
-// import NoPage from '../views/404.vue'
-// import Home from '../views/Home.vue'
-// import Project from '../views/Projext.vue'
-// import Resume from '../views/Resume.vue'
-
-// import Blog from '../views/Blog.vue'
-// import Bloghome from '../views/blog/Bloghome.vue'
-// import Post from '../components/Post.vue'
-
-// import About from '../components/About.vue'
-// import Classified from '../components/Posts/ClassIfied.vue'
-// import Tags from '../components/Posts/tags.vue'
-// import Times from '../components/Posts/Times.vue'
-// import Comment from '../components/page/Comment.vue'
-
-// import Login from '../components/Login/Login.vue'
-// import Index from '../components/Login/index.vue'
-// import Welcome from '../components/page/welcome.vue'
-
-// import PageList from '../components/page/PageList.vue'
-// import WirtePage from '../components/page/WritePage.vue'
-// import EditPage from '../components/page/EditPage.vue'
-// import indexTimes from '../components/page/timelink.vue'
-// import Music from '../components/music.vue'
-// import Comments from '../components/Posts/comments.vue'
-
 const routes = [
   { path: '*', component: NoPage },
   { path: '/', component: Home, name: 'home' },
@@ -78,7 +51,6 @@ const routes = [
       { path: '/tags', component: Tags, name: 'tags' },
       { path: '/times', component: Times, name: 'times' },
       { path: '/comments', component: Comments, name: 'comments' }
-
     ]
   },
   { path: '/login', component: Login, name: 'login' },

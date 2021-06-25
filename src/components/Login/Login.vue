@@ -78,7 +78,7 @@ export default {
     login () {
       this.$refs.loginFormref.validate(async valid => {
         if (!valid) return
-        const { data: res } = await this.$http.post('https://api.axian.fun/api/login', this.loginForm)
+        const { data: res } = await this.$http.post('api/login', this.loginForm)
 
         if (res.status !== 0) {
           return this.nosuccessmessage()

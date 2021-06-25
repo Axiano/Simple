@@ -434,7 +434,7 @@ export default {
       this.commentForm.url.trim()
       if (this.commentForm.nickname === '' || this.commentForm.email === '' || this.commentForm.url === '') { return this.warning() }
       this.commentForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-      const { data: res } = await this.$http.post('https://api.axian.fun/api/addcomments', this.commentForm)
+      const { data: res } = await this.$http.post('api/addcomments', this.commentForm)
       if (res.status !== 0) return this.error()
       this.commentForm.nickname = ''
       this.commentForm.email = ''
@@ -469,7 +469,7 @@ export default {
       this.replyForm.url.trim()
       if (this.replyForm.nickname === '' || this.replyForm.email === '' || this.replyForm.url === '') { return this.warning() }
       this.replyForm.time = moment().format('YYYY-MM-DD HH:mm:ss')
-      const { data: res } = await this.$http.post('https://api.axian.fun/api/addreply', this.replyForm)
+      const { data: res } = await this.$http.post('api/addreply', this.replyForm)
       if (res.status !== 0) return this.error()
       this.success()
       this.replyForm.nickname = ''

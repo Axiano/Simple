@@ -122,7 +122,7 @@ export default {
       this.$refs.pageFormRef.validate(async valid => {
         if (!valid) return
         this.pageForm.pagecontent = this.value
-        const { data: res } = await this.$http.post('https://api.axian.fun/my/addpage', this.pageForm)
+        const { data: res } = await this.$http.post('my/addpage', this.pageForm)
         if (res.status !== 0) return this.nosuccessmessage()
         window.localStorage.setItem('saveHtml', ' ')
         this.successmessage()

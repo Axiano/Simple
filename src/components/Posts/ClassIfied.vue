@@ -45,7 +45,7 @@ export default {
   methods: {
     // async goPost (id) {
     //   // console.log(id)
-    //   const { data: res } = await this.$http.get(`https://api.axian.fun/api/getpage/${id}`)
+    //   const { data: res } = await this.$http.get(`api/getpage/${id}`)
     //   if (res.status !== 0) return
     //   this.$router.push(`/post/${res.data[0].pagepath}`)
     // }
