@@ -6,7 +6,7 @@
 ![](https://pan.axian.fun/view.php/61c1dd2e2e2856a9f5634091be9fe4bf.png)
 
 ## demo
-[demo](https://demo.axian.fun) 用户名：admin，密码：123456
+[demo](https://demo.axian.fun) 用户名：admin，密码：123456 <br />
 [Myblog](https://axian.fun)
 
 ## 使用
