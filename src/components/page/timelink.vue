@@ -169,11 +169,6 @@ export default {
         return 'other'
       }
     },
-    async getTianQi () {
-      var result = await this.$http.get('http://wthrcdn.etouch.cn/weather_mini?city=北京')
-      const weather = result.data.data.forecast[0].type
-      this.timeForm.time += ' ' + weather
-    },
     cancel (e) {
       this.$message.warning('取消删除！')
     }

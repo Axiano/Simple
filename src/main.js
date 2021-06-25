@@ -9,7 +9,7 @@ import mavonEditor from 'mavon-editor'
 import yaml from 'js-yaml'
 import './assets/css/global.css'
 Vue.config.productionTip = false
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'https://api.axian.fun/'
 axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
