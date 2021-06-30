@@ -27,6 +27,16 @@ npm run build
 
 [simple_server](https://github.com/Axiano/Simple_server)
 
+### 功能
+- [x] 评论系统
+- [x] 说说板
+- [x] 后台管理
+- [x] 实时写作
+- [x] 实时修改文章
+- [x] 所有设备适配
+- [ ] 暗黑模式
+- [ ] 文章目录
+
 ### 最后
 因为这是第一次项目，有许多的不足，和奇奇怪怪的Bug
 如果发现Bug，请到我的博客留言，或者邮箱 577914237@qq.com
